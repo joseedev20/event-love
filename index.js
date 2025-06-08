@@ -74,6 +74,16 @@ app.post('/agregar-evento', async (req, res) => {
   }
 });
 
+// GET /eventos
+app.get('/eventos', (req, res) => {
+  if (fs.existsSync(RUTA_EVENTOS)) {
+    const eventos = JSON.parse(fs.readFileSync(RUTA_EVENTOS));
+    res.json(eventos);
+  } else {
+    res.json([]);
+  }
+});
+
 // Función genérica para obtener el SHA de un archivo
 async function obtenerShaActual(nombreArchivo) {
   try {
