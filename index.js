@@ -3,9 +3,13 @@ const fs = require('fs');
 const dotenv = require('dotenv');
 const axios = require('axios');
 const generarICS = require('./utils/generarICS');
+const cors = require('cors');
+
 
 dotenv.config();
 const app = express();
+app.use(cors());
+
 app.use(express.json());
 
 const RUTA_EVENTOS = './eventos.json';
