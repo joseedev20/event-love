@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +26,7 @@
       background: white;
       padding: 20px;
       border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     label {
@@ -34,7 +35,8 @@
       font-weight: 500;
     }
 
-    input, textarea {
+    input,
+    textarea {
       width: 100%;
       padding: 10px;
       font-size: 1rem;
@@ -83,6 +85,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <h1>📅 Event Love </h1>
@@ -108,12 +111,12 @@
 
   <div class="separador">ó</div>
 
-<a href="webcal://joseedev20.github.io/event-love/calendario.ics">
+  <a href="webcal://joseedev20.github.io/event-love/calendario.ics">
     <button class="btn-suscribirse">Actualizar calendario</button>
   </a>
 
   <script>
-    document.getElementById('form-evento').addEventListener('submit', function(e) {
+    document.getElementById('form-evento').addEventListener('submit', function (e) {
       e.preventDefault();
 
       const titulo = document.getElementById('titulo').value;
@@ -151,11 +154,34 @@ DESCRIPTION:${descripcion}
 END:VEVENT
 END:VCALENDAR`;
 
-      const blob = new Blob([contenidoICS], { type: 'text/calendar' });
-      const url = URL.createObjectURL(blob);
-      window.location.href = url;
+      // const blob = new Blob([contenidoICS], { type: 'text/calendar' });
+      // const url = URL.createObjectURL(blob);
+      // window.location.href = url;
+
+      fetch('https://TUDOMINIO/api/agregar-evento', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          titulo,
+          descripcion,
+          fecha: inicioRaw
+        })
+      })
+
+
+
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) alert("✅ Evento agregado y sincronizado.");
+          else alert("⚠️ Hubo un problema.");
+        });
+
+
+
+
     });
   </script>
 
 </body>
+
 </html>
