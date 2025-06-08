@@ -1,1 +1,27 @@
-[]
+[
+  {
+    "titulo": "sacar dinero",
+    "descripcion": "sacar dinero",
+    "fecha": "2025-06-08"
+  },
+  {
+    "titulo": "test 2 sacar dinero",
+    "descripcion": "test 2 sacar dinero",
+    "fecha": "2025-06-08"
+  },
+  {
+    "titulo": "Cena",
+    "descripcion": "",
+    "fecha": "2025-06-11"
+  },
+  {
+    "titulo": "Ida bogota",
+    "descripcion": "Comprar pan ",
+    "fecha": "2025-06-14"
+  },
+  {
+    "titulo": "test view",
+    "descripcion": "",
+    "fecha": "2025-06-08"
+  }
+]
