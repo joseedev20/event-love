@@ -63,5 +63,5 @@ async function obtenerShaActual() {
   );
   return response.data.sha;
 }
-
-app.listen(3000, () => console.log('API corriendo en http://localhost:3000'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`🚀 API corriendo en el puerto ${PORT}`));
