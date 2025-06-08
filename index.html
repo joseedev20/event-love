@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Event Love</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐱</text></svg>"> -->
-       <link rel="icon" href="./apple-touch-icon.png">
+  <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐱</text></svg>"> -->
+  <link rel="icon" href="./apple-touch-icon.png">
 
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 
   <style>
     body {
@@ -22,7 +22,7 @@
       overflow-x: hidden;
     }
 
-  h1 {
+    h1 {
       text-align: center;
       font-size: 2.2rem;
       color: #d63384;
@@ -109,7 +109,8 @@
       font-size: 2rem;
       user-select: none;
     }
-        .gatito {
+
+    .gatito {
       display: block;
       text-align: center;
       font-size: 2rem;
@@ -121,6 +122,7 @@
         transform: translateY(0) rotate(0);
         opacity: 1;
       }
+
       100% {
         transform: translateY(-80px) rotate(30deg);
         opacity: 0;
@@ -150,7 +152,13 @@
     </label>
 
     <button type="submit">Agregar evento con amor 💕</button>
+
+
+
   </form>
+  <button type="button" id="ver-eventos" class="btn-suscribirse">📚 Ver Eventos Guardados</button>
+
+    <ul id="lista-eventos" style="max-width:500px; margin:20px auto; list-style:none; padding:0;"></ul>
 
   <div class="separador">o</div>
 
@@ -160,7 +168,7 @@
 
   <script>
 
-        document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
       const hoy = new Date().toISOString().split('T')[0];
       document.getElementById('inicio').value = hoy;
     });
@@ -183,6 +191,35 @@
           else alert("😿 Algo falló, intenta de nuevo con amor.");
         });
     });
+
+document.getElementById('ver-eventos').addEventListener('click', () => {
+  fetch('https://event-love.onrender.com/eventos')
+    .then(res => res.json())
+    .then(eventos => {
+      const lista = document.getElementById('lista-eventos');
+      lista.innerHTML = '';
+
+      if (eventos.length === 0) {
+        lista.innerHTML = '<li style="text-align:center;">😿 No hay eventos guardados aún.</li>';
+        return;
+      }
+
+      eventos.forEach(ev => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <div style="background:white; padding:15px; margin-bottom:10px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+            <strong>📅 ${ev.fecha}</strong><br>
+            <strong>💌 ${ev.titulo}</strong><br>
+            <em>📝 ${ev.descripcion || 'Sin descripción'}</em>
+          </div>
+        `;
+        lista.appendChild(li);
+      });
+    });
+});
+
+
+
 
     // corazones flotando
     for (let i = 0; i < 12; i++) {
