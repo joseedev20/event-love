@@ -48,5 +48,11 @@
     "titulo": "Compras ",
     "descripcion": "Pastillas, bombillo, individuales ",
     "fecha": "2025-06-10"
+  },
+  {
+    "titulo": "trabajo",
+    "descripcion": "trabajo",
+    "fecha": "2025-06-11",
+    "momento": "mañana"
   }
 ]
