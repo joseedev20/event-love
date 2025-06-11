@@ -66,5 +66,11 @@
     "descripcion": "desayunar",
     "fecha": "2025-06-11",
     "momento": "mañana"
+  },
+  {
+    "titulo": "ir al D1",
+    "descripcion": "COMPRAR CARNE",
+    "fecha": "2025-06-12",
+    "momento": "noche"
   }
 ]
