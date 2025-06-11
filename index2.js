@@ -25,7 +25,6 @@ app.post('/agregar-evento', async (req, res) => {
   eventos.push(nuevoEvento);
   fs.writeFileSync(RUTA_EVENTOS, JSON.stringify(eventos, null, 2));
 
-  console.log(' generarICS eventos', eventos)
   const icsContent = generarICS(eventos);
   fs.writeFileSync(RUTA_ICS, icsContent);
 

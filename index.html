@@ -117,6 +117,42 @@
       margin-bottom: 20px;
     }
 
+    #loader {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 240, 250, 0.8);
+      z-index: 9999;
+      text-align: center;
+      padding-top: 200px;
+      font-size: 2rem;
+      color: #d63384;
+      font-family: 'Pacifico', cursive;
+    }
+
+    #loader span {
+      display: inline-block;
+      animation: pulse 1s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+
+
     @keyframes float {
       0% {
         transform: translateY(0) rotate(0);
@@ -132,6 +168,8 @@
 </head>
 
 <body>
+  <div id="loader">🐱 Cargando...</div>
+
   <h1>Event Love 💖</h1>
   <div class="gatito">🐱 + 👩‍❤️‍💋‍👨 = 🗓️</div>
 
@@ -145,6 +183,16 @@
       Día del evento:
       <input type="date" id="inicio" required>
     </label>
+    <label>
+  Momento del día:
+  <select id="momento">
+    <option value="todo" selected>Todo el día</option>
+    <option value="mañana">Mañana</option>
+    <option value="tarde">Tarde</option>
+    <option value="noche">Noche</option>
+  </select>
+</label>
+
 
     <label>
       Descripción:
@@ -158,7 +206,7 @@
   </form>
   <button type="button" id="ver-eventos" class="btn-suscribirse">💕Ver Eventos</button>
 
-    <ul id="lista-eventos" style="max-width:500px; margin:20px auto; list-style:none; padding:0;"></ul>
+  <ul id="lista-eventos" style="max-width:500px; margin:20px auto; list-style:none; padding:0;"></ul>
 
   <div class="separador">o</div>
 
@@ -173,38 +221,94 @@
       document.getElementById('inicio').value = hoy;
     });
 
+    // document.getElementById('form-evento').addEventListener('submit', function (e) {
+    //   e.preventDefault();
+
+    //   const titulo = document.getElementById('titulo').value;
+    //   const descripcion = document.getElementById('descripcion').value;
+    //   const inicioRaw = document.getElementById('inicio').value;
+
+    //   fetch('https://event-love.onrender.com/agregar-evento', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ titulo, descripcion, fecha: inicioRaw })
+    //   })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //       if (data.success) alert("🐱💌 Evento agregado con éxito y sincronizado en sus corazones (y calendarios).");
+    //       else alert("😿 Algo falló, intenta de nuevo con amor.");
+    //     });
+    // });
+
     document.getElementById('form-evento').addEventListener('submit', function (e) {
-      e.preventDefault();
+  e.preventDefault();
+  document.getElementById('loader').style.display = 'block';
 
-      const titulo = document.getElementById('titulo').value;
-      const descripcion = document.getElementById('descripcion').value;
-      const inicioRaw = document.getElementById('inicio').value;
+  const titulo = document.getElementById('titulo').value;
+  const descripcion = document.getElementById('descripcion').value;
+  const inicioRaw = document.getElementById('inicio').value;
+  const momento = document.getElementById('momento').value;
 
-      fetch('https://event-love.onrender.com/agregar-evento', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ titulo, descripcion, fecha: inicioRaw })
-      })
-        .then(res => res.json())
-        .then(data => {
-          if (data.success) alert("🐱💌 Evento agregado con éxito y sincronizado en sus corazones (y calendarios).");
-          else alert("😿 Algo falló, intenta de nuevo con amor.");
-        });
+  fetch('https://event-love.onrender.com/agregar-evento', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ titulo, descripcion, fecha: inicioRaw, momento: momento })
+  })
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('loader').style.display = 'none';
+      if (data.success) alert("🐱💌 Evento agregado con éxito y sincronizado.");
+      else alert("😿 Algo falló, intenta de nuevo.");
     });
+});
 
+
+    // document.getElementById('ver-eventos').addEventListener('click', () => {
+    //   fetch('https://event-love.onrender.com/eventos')
+    //     .then(res => res.json())
+    //     .then(eventos => {
+    //       const lista = document.getElementById('lista-eventos');
+    //       lista.innerHTML = '';
+
+    //       if (eventos.length === 0) {
+    //         lista.innerHTML = '<li style="text-align:center;">😿 No hay eventos guardados aún.</li>';
+    //         return;
+    //       }
+
+    //       eventos.forEach(ev => {
+    //         const li = document.createElement('li');
+    //         li.innerHTML = `
+    //       <div style="background:white; padding:15px; margin-bottom:10px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+    //         <strong>📅 ${ev.fecha}</strong><br>
+    //         <strong>💌 ${ev.titulo}</strong><br>
+    //         <em>📝 ${ev.descripcion || 'Sin descripción'}</em>
+    //       </div>
+    //     `;
+    //         lista.appendChild(li);
+    //       });
+    //     });
+    // });
 document.getElementById('ver-eventos').addEventListener('click', () => {
+  document.getElementById('loader').style.display = 'block';
+
   fetch('https://event-love.onrender.com/eventos')
     .then(res => res.json())
     .then(eventos => {
       const lista = document.getElementById('lista-eventos');
       lista.innerHTML = '';
+      document.getElementById('loader').style.display = 'none';
 
-      if (eventos.length === 0) {
-        lista.innerHTML = '<li style="text-align:center;">😿 No hay eventos guardados aún.</li>';
+      const hoy = new Date().toISOString().split('T')[0];
+
+      // Filtrar solo eventos futuros o de hoy
+      const eventosFuturos = eventos.filter(ev => ev.fecha >= hoy);
+
+      if (eventosFuturos.length === 0) {
+        lista.innerHTML = '<li style="text-align:center;">😿 No hay eventos futuros guardados.</li>';
         return;
       }
 
-      eventos.forEach(ev => {
+      eventosFuturos.forEach(ev => {
         const li = document.createElement('li');
         li.innerHTML = `
           <div style="background:white; padding:15px; margin-bottom:10px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
@@ -217,7 +321,6 @@ document.getElementById('ver-eventos').addEventListener('click', () => {
       });
     });
 });
-
 
 
 

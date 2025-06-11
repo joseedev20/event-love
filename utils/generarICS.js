@@ -1,22 +1,48 @@
-function formatearFecha(fecha) {
-  const d = new Date(fecha);
-  return d.toISOString().split('T')[0].replace(/-/g, '');
+function obtenerRangoHora(fecha, momento) {
+  const base = new Date(fecha);
+
+  switch (momento) {
+    case 'mañana':
+      return {
+        inicio: new Date(base.setHours(6, 0, 0)),
+        fin: new Date(base.setHours(12, 0, 0))
+      };
+    case 'tarde':
+      return {
+        inicio: new Date(base.setHours(13, 0, 0)),
+        fin: new Date(base.setHours(18, 0, 0))
+      };
+    case 'noche':
+      return {
+        inicio: new Date(base.setHours(19, 0, 0)),
+        fin: new Date(base.setHours(23, 0, 0))
+      };
+    case 'todo':
+    default:
+      return {
+        inicio: new Date(fecha),
+        fin: new Date(new Date(fecha).getTime() + 86400000) // +1 día
+      };
+  }
+}
+
+function formatearFechaHora(date) {
+  return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
 }
 
 function generarICS(eventos) {
   let contenido = 'BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Event Love//ES\n';
 
   eventos.forEach((evento, index) => {
-    const inicio = formatearFecha(evento.fecha);
-    const fin = formatearFecha(new Date(new Date(evento.fecha).getTime() + 86400000));
+    const { inicio, fin } = obtenerRangoHora(evento.fecha, evento.momento || 'todo');
 
     contenido += `BEGIN:VEVENT
 UID:${Date.now()}-${index}@eventlove.com
-DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z
-DTSTART;VALUE=DATE:${inicio}
-DTEND;VALUE=DATE:${fin}
+DTSTAMP:${formatearFechaHora(new Date())}
+DTSTART:${formatearFechaHora(inicio)}
+DTEND:${formatearFechaHora(fin)}
 SUMMARY:${evento.titulo}
-DESCRIPTION:${evento.descripcion}
+DESCRIPTION:${evento.descripcion || ''}
 END:VEVENT
 `;
   });
