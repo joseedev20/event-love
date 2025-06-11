@@ -23,5 +23,36 @@
     "titulo": "test view",
     "descripcion": "",
     "fecha": "2025-06-08"
+  },
+  {
+    "titulo": "Cumpleaños camilo",
+    "descripcion": "Comprar regalo antes",
+    "fecha": "2025-05-24"
+  },
+  {
+    "titulo": "Compras ",
+    "descripcion": "Pastillas, bombillo, individuales ",
+    "fecha": "2025-06-10"
+  },
+  {
+    "titulo": "Compras ",
+    "descripcion": "Pastillas, bombillo, individuales ",
+    "fecha": "2025-06-10"
+  },
+  {
+    "titulo": "Compras ",
+    "descripcion": "Pastillas, bombillo, individuales ",
+    "fecha": "2025-06-10"
+  },
+  {
+    "titulo": "Compras ",
+    "descripcion": "Pastillas, bombillo, individuales ",
+    "fecha": "2025-06-10"
+  },
+  {
+    "titulo": "trabajo",
+    "descripcion": "trabajo",
+    "fecha": "2025-06-11",
+    "momento": "mañana"
   }
 ]
