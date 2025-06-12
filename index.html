@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Event Love</title>
-<link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
 
   <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐱</text></svg>"> -->
   <link rel="icon" href="./apple-touch-icon.png">
@@ -14,7 +14,7 @@
 
   <style>
     body {
-    font-family: 'Quicksand', sans-serif;
+      font-family: 'Quicksand', sans-serif;
       background: linear-gradient(135deg, #ffe6f0, #e0f7ff);
       margin: 0;
       padding: 20px;
@@ -169,7 +169,7 @@
 </head>
 
 <body>
-  <div id="loader">🐱 Cargando...</div>
+  <div id="loader">🐱💌 Cargando...💖</div>
 
   <h1>Event Love 💖</h1>
   <div class="gatito">🐱 + 👩‍❤️‍💋‍👨 = 🗓️</div>
@@ -185,14 +185,14 @@
       <input type="date" id="inicio" required>
     </label>
     <label>
-  Momento del día:
-  <select id="momento">
-    <option value="todo" selected>Todo el día</option>
-    <option value="mañana">Mañana</option>
-    <option value="tarde">Tarde</option>
-    <option value="noche">Noche</option>
-  </select>
-</label>
+      Momento del día:
+      <select id="momento">
+        <option value="todo" selected>Todo el día</option>
+        <option value="mañana">Mañana</option>
+        <option value="tarde">Tarde</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
 
 
     <label>
@@ -225,53 +225,60 @@
 
 
     document.getElementById('form-evento').addEventListener('submit', function (e) {
-  e.preventDefault();
-  document.getElementById('loader').style.display = 'block';
+      e.preventDefault();
+      document.getElementById('loader').style.display = 'block';
 
-  const titulo = document.getElementById('titulo').value;
-  const descripcion = document.getElementById('descripcion').value;
-  const inicioRaw = document.getElementById('inicio').value;
-  const momento = document.getElementById('momento').value;
+      const titulo = document.getElementById('titulo').value;
+      const descripcion = document.getElementById('descripcion').value;
+      const inicioRaw = document.getElementById('inicio').value;
+      const momento = document.getElementById('momento').value;
 
-  fetch('https://event-love.onrender.com/agregar-evento', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ titulo, descripcion, fecha: inicioRaw, momento: momento })
-  })
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('loader').style.display = 'none';
-      if (data.success) alert("🐱💌 Evento agregado con éxito y sincronizado.");
-      else alert("😿 Algo falló, intenta de nuevo.");
+      fetch('https://event-love.onrender.com/agregar-evento', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ titulo, descripcion, fecha: inicioRaw, momento: momento })
+      })
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('loader').style.display = 'none';
+          if (data.success) {
+            alert("🐱💌 Evento agregado con éxito y sincronizado.");
+            document.getElementById('form-evento').reset();
+
+
+          }
+          else {
+          alert("😿 Algo falló, intenta de nuevo.");
+          } 
+        });
     });
-});
 
 
-document.getElementById('ver-eventos').addEventListener('click', () => {
-  document.getElementById('loader').style.display = 'block';
+    document.getElementById('ver-eventos').addEventListener('click', () => {
+      document.getElementById('loader').style.display = 'block';
 
-  fetch('https://event-love.onrender.com/eventos')
-    .then(res => res.json())
-    .then(eventos => {
-      const lista = document.getElementById('lista-eventos');
-      lista.innerHTML = '';
-      document.getElementById('loader').style.display = 'none';
+      fetch('https://event-love.onrender.com/eventos')
+        .then(res => res.json())
+        .then(eventos => {
+          const lista = document.getElementById('lista-eventos');
+          lista.innerHTML = '';
+          document.getElementById('loader').style.display = 'none';
 
-      const hoy = new Date().toISOString().split('T')[0];
+          const hoy = new Date().toISOString().split('T')[0];
 
-      // Filtrar solo eventos futuros o de hoy
-      const eventosFuturos = eventos
-        .filter(ev => ev.fecha >= hoy)
-        .sort((a, b) => new Date(a.fecha) - new Date(b.fecha)); // 🔥 Ordenar por fecha ascendente
+          // Filtrar solo eventos futuros o de hoy
+          const eventosFuturos = eventos
+            .filter(ev => ev.fecha >= hoy)
+            .sort((a, b) => new Date(a.fecha) - new Date(b.fecha)); // 🔥 Ordenar por fecha ascendente
 
-      if (eventosFuturos.length === 0) {
-        lista.innerHTML = '<li style="text-align:center;">😿 No hay eventos futuros guardados.</li>';
-        return;
-      }
+          if (eventosFuturos.length === 0) {
+            lista.innerHTML = '<li style="text-align:center;">😿 No hay eventos futuros guardados.</li>';
+            return;
+          }
 
-      eventosFuturos.forEach(ev => {
-        const li = document.createElement('li');
-        li.innerHTML = `
+          eventosFuturos.forEach(ev => {
+            const li = document.createElement('li');
+            li.innerHTML = `
           <div style="background:white; padding:15px; margin-bottom:10px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
             <strong>📅 ${ev.fecha}</strong><br>
             <strong>💌 ${ev.titulo}</strong><br>
@@ -279,10 +286,10 @@ document.getElementById('ver-eventos').addEventListener('click', () => {
             <em>📝 ${ev.descripcion || 'Sin descripción'}</em>
           </div>
         `;
-        lista.appendChild(li);
-      });
+            lista.appendChild(li);
+          });
+        });
     });
-});
 
 
 
