@@ -1,10 +1,4 @@
 function obtenerRangoHora(fecha, momento) {
-  function crearFechaHora(hora, minuto) {
-    // Fecha en zona horaria Colombia (-5), pero como JavaScript usa local o UTC, lo ajustamos
-    const local = new Date(`${fecha}T${String(hora).padStart(2, '0')}:${String(minuto).padStart(2, '0')}:00-05:00`);
-    return new Date(local.toISOString()); // Esto asegura que sea UTC correctamente
-  }
-
   switch (momento) {
     case 'mañana':
       return {
@@ -69,6 +63,10 @@ END:VEVENT
   contenido += 'END:VCALENDAR\n';
   return contenido;
 }
-
+  function crearFechaHora(hora, minuto) {
+    // Fecha en zona horaria Colombia (-5), pero como JavaScript usa local o UTC, lo ajustamos
+    const local = new Date(`${fecha}T${String(hora).padStart(2, '0')}:${String(minuto).padStart(2, '0')}:00-05:00`);
+    return new Date(local.toISOString()); // Esto asegura que sea UTC correctamente
+  }
 
 module.exports = generarICS;
