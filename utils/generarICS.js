@@ -1,31 +1,35 @@
 function obtenerRangoHora(fecha, momento) {
-  const base = new Date(fecha);
+  function crearFechaHora(hora, minuto) {
+    // Fecha en zona horaria Colombia (-5), pero como JavaScript usa local o UTC, lo ajustamos
+    const local = new Date(`${fecha}T${String(hora).padStart(2, '0')}:${String(minuto).padStart(2, '0')}:00-05:00`);
+    return new Date(local.toISOString()); // Esto asegura que sea UTC correctamente
+  }
 
   switch (momento) {
     case 'mañana':
       return {
         todoDia: false,
-        inicio: new Date(base.setHours(6, 0, 0)),
-        fin: new Date(base.setHours(12, 0, 0))
+        inicio: crearFechaHora(6, 0),
+        fin: crearFechaHora(12, 0)
       };
     case 'tarde':
       return {
         todoDia: false,
-        inicio: new Date(base.setHours(13, 0, 0)),
-        fin: new Date(base.setHours(18, 0, 0))
+        inicio: crearFechaHora(13, 0),
+        fin: crearFechaHora(18, 0)
       };
     case 'noche':
       return {
         todoDia: false,
-        inicio: new Date(base.setHours(19, 0, 0)),
-        fin: new Date(base.setHours(23, 0, 0))
+        inicio: crearFechaHora(19, 0),
+        fin: crearFechaHora(23, 0)
       };
     case 'todo':
     default:
       return {
         todoDia: true,
-        inicio: new Date(fecha),
-        fin: new Date(new Date(fecha).getTime() + 86400000)
+        inicio: new Date(`${fecha}T00:00:00-05:00`),
+        fin: new Date(`${fecha}T00:00:00-05:00`) // se ajusta en `formatearFechaSolo`
       };
   }
 }
@@ -65,5 +69,6 @@ END:VEVENT
   contenido += 'END:VCALENDAR\n';
   return contenido;
 }
+
 
 module.exports = generarICS;
