@@ -171,7 +171,9 @@
 <body>
   <div id="loader">🐱💌 Cargando...💖</div>
 
-  <h1>Event Love 💖</h1>
+<h1>Event Love 💖</h1>
+<div id="estado-servidor" style="text-align:center; font-size:0.9rem; color:#666;"></div>
+
   <div class="gatito">🐱 + 👩‍❤️‍💋‍👨 = 🗓️</div>
 
   <form id="form-evento">
@@ -218,16 +220,28 @@
   <script>
 
   // Precalentamiento del servidor Render al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-  // Establecer la fecha por defecto del formulario
-  document.getElementById('inicio').value = obtenerFechaColombia();
+const estadoServidor = document.getElementById('estado-servidor');
 
-  // Hacer ping al backend para precalentar
-  fetch('https://event-love.onrender.com/eventos')
-    .then(res => res.json())
-    .then(() => console.log('⚡ Servidor precalentado'))
-    .catch(err => console.warn('⚠️ Error al precalentar el servidor:', err));
-});
+Promise.all([
+  fetch('https://event-love.onrender.com/eventos'),
+  fetch('https://event-love.onrender.com/agregar-evento', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ titulo: 'test', descripcion: '', fecha: '2099-01-01', momento: 'todo' })
+  })
+])
+  .then(() => {
+    console.log('⚡ Servidor precalentado');
+    estadoServidor.textContent = '💖 Servidor listo para recibir amor.';
+    estadoServidor.style.color = '#28a745'; // verde
+  })
+  .catch(err => {
+    console.warn('⚠️ Error al precalentar:', err);
+    estadoServidor.textContent = '😿 Servidor aún no está listo.';
+    estadoServidor.style.color = '#dc3545'; // rojo
+  });
+
+
 
 
 

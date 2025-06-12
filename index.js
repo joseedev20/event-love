@@ -16,6 +16,10 @@ const RUTA_ICS = './calendario.ics';
 // POST /agregar-evento
 app.post('/agregar-evento', async (req, res) => {
   const nuevoEvento = req.body;
+   if (nuevoEvento.titulo === 'test') {
+    return res.json({ success: true, mensaje: 'Evento de prueba ignorado' });
+  }
+
 
   let eventos = [];
   if (fs.existsSync(RUTA_EVENTOS)) {
