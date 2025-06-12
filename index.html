@@ -218,8 +218,7 @@
   <script>
 
     document.addEventListener('DOMContentLoaded', () => {
-      const hoy = new Date().toISOString().split('T')[0];
-      document.getElementById('inicio').value = hoy;
+      document.getElementById('inicio').value = obtenerFechaColombia();
     });
 
 
@@ -303,6 +302,15 @@
       heart.style.animationDuration = (3 + Math.random() * 2) + 's';
       document.body.appendChild(heart);
     }
+
+
+    function obtenerFechaColombia() {
+  const fechaUTC = new Date();
+  const offsetColombia = -5; // UTC-5
+  fechaUTC.setHours(fechaUTC.getUTCHours() + offsetColombia);
+  return fechaUTC.toISOString().split('T')[0];
+}
+
   </script>
 
 </body>
