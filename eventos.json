@@ -16,5 +16,11 @@
     "descripcion": "Hoy ",
     "fecha": "2025-06-11",
     "momento": "noche"
+  },
+  {
+    "titulo": "Prueba 2",
+    "descripcion": "Prueba",
+    "fecha": "2025-06-12",
+    "momento": "mañana"
   }
 ]
