@@ -263,8 +263,8 @@
           lista.innerHTML = '';
           document.getElementById('loader').style.display = 'none';
 
-const hoy = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Bogota" }));
-hoy.setHours(0, 0, 0, 0);
+          const hoy = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Bogota" }));
+          hoy.setHours(0, 0, 0, 0);
 
 
 
@@ -273,7 +273,7 @@ hoy.setHours(0, 0, 0, 0);
           const eventosFuturos = eventos
             .map(ev => ({ ...ev, fechaDate: new Date(ev.fecha + 'T00:00:00-05:00') }))
             .filter(ev => ev.fechaDate >= hoy)
-            .sort((a, b) => ev.fechaDate - b.fechaDate);
+            .sort((a, b) => a.fechaDate - b.fechaDate);
 
           if (eventosFuturos.length === 0) {
             lista.innerHTML = '<li style="text-align:center;">😿 No hay eventos futuros guardados.</li>';
@@ -281,13 +281,13 @@ hoy.setHours(0, 0, 0, 0);
           }
 
           eventosFuturos.forEach(ev => {
-            let moment= ev.momento || 'todo';
+            let moment = ev.momento || 'todo';
             let momentostr = '';
             if (momento == 'todo') {
-               momentostr = 'Todo el Dia';
+              momentostr = 'Todo el Dia';
             }
             else {
-                momentostr = 'En la ' + moment
+              momentostr = 'En la ' + moment
             }
             const li = document.createElement('li');
             li.innerHTML = `
