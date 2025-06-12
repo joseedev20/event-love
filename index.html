@@ -314,6 +314,7 @@ document.getElementById('ver-eventos').addEventListener('click', () => {
           <div style="background:white; padding:15px; margin-bottom:10px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
             <strong>📅 ${ev.fecha}</strong><br>
             <strong>💌 ${ev.titulo}</strong><br>
+            <em>⏰ ${ev.momento || 'Todo el día'}</em><br>
             <em>📝 ${ev.descripcion || 'Sin descripción'}</em>
           </div>
         `;
