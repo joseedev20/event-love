@@ -258,6 +258,8 @@ document.getElementById('form-evento').addEventListener('submit', function (e) {
   const inicioRaw = document.getElementById('inicio').value;
   const momento = document.getElementById('momento').value;
 
+  console.log({titulo, descripcion, inicioRaw, momento})
+
   fetch('https://event-love.onrender.com/agregar-evento', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

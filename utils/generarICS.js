@@ -3,20 +3,20 @@ function obtenerRangoHora(fecha, momento) {
     case 'mañana':
       return {
         todoDia: false,
-        inicio: crearFechaHora(6, 0),
-        fin: crearFechaHora(12, 0)
+        inicio: crearFechaHora(fecha, 6, 0),
+        fin: crearFechaHora(fecha, 12, 0)
       };
     case 'tarde':
       return {
         todoDia: false,
-        inicio: crearFechaHora(13, 0),
-        fin: crearFechaHora(18, 0)
+        inicio: crearFechaHora(fecha, 13, 0),
+        fin: crearFechaHora(fecha, 18, 0)
       };
     case 'noche':
       return {
         todoDia: false,
-        inicio: crearFechaHora(19, 0),
-        fin: crearFechaHora(23, 0)
+        inicio: crearFechaHora(fecha, 19, 0),
+        fin: crearFechaHora(fecha, 23, 0)
       };
     case 'todo':
     default:
@@ -36,6 +36,11 @@ function formatearFechaSolo(date) {
   return date.toISOString().split('T')[0].replace(/-/g, '');
 }
 
+function crearFechaHora(fecha, hora, minuto) {
+  const local = new Date(`${fecha}T${String(hora).padStart(2, '0')}:${String(minuto).padStart(2, '0')}:00-05:00`);
+  return new Date(local.toISOString());
+}
+
 function generarICS(eventos) {
   let contenido = 'BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Event Love//ES\n';
 
@@ -49,24 +54,11 @@ function generarICS(eventos) {
       ? `DTEND;VALUE=DATE:${formatearFechaSolo(fin)}`
       : `DTEND:${formatearFechaHora(fin)}`;
 
-    contenido += `BEGIN:VEVENT
-UID:${Date.now()}-${index}@eventlove.com
-DTSTAMP:${formatearFechaHora(new Date())}
-${dtStart}
-${dtEnd}
-SUMMARY:${evento.titulo}
-DESCRIPTION:${evento.descripcion || ''}
-END:VEVENT
-`;
+    contenido += `BEGIN:VEVENT\nUID:${Date.now()}-${index}@eventlove.com\nDTSTAMP:${formatearFechaHora(new Date())}\n${dtStart}\n${dtEnd}\nSUMMARY:${evento.titulo}\nDESCRIPTION:${evento.descripcion || ''}\nEND:VEVENT\n`;
   });
 
   contenido += 'END:VCALENDAR\n';
   return contenido;
 }
-  function crearFechaHora(hora, minuto) {
-    // Fecha en zona horaria Colombia (-5), pero como JavaScript usa local o UTC, lo ajustamos
-    const local = new Date(`${fecha}T${String(hora).padStart(2, '0')}:${String(minuto).padStart(2, '0')}:00-05:00`);
-    return new Date(local.toISOString()); // Esto asegura que sea UTC correctamente
-  }
 
 module.exports = generarICS;

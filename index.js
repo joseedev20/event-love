@@ -16,6 +16,7 @@ const RUTA_ICS = './calendario.ics';
 // POST /agregar-evento
 app.post('/agregar-evento', async (req, res) => {
   const nuevoEvento = req.body;
+  console.log('nuevoEvento', nuevoEvento)
    if (nuevoEvento.titulo === 'test') {
     return res.json({ success: true, mensaje: 'Evento de prueba ignorado' });
   }
