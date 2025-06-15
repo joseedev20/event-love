@@ -46,5 +46,11 @@
     "descripcion": "Compras regalo y toalla Carro ",
     "fecha": "2025-06-15",
     "momento": "todo"
+  },
+  {
+    "titulo": "Cita médica ",
+    "descripcion": "Cita médica 9:20am",
+    "fecha": "2025-06-28",
+    "momento": "mañana"
   }
 ]
