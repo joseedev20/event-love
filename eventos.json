@@ -70,5 +70,11 @@
     "descripcion": "Inglés 1:30 pm 3:00 pm ",
     "fecha": "2025-06-28",
     "momento": "tarde"
+  },
+  {
+    "titulo": "Ayuno del gordito ",
+    "descripcion": "Última comida y toma de agua del gordito 8:00pm",
+    "fecha": "2025-07-03",
+    "momento": "noche"
   }
 ]
