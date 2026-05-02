@@ -10,6 +10,42 @@ const manifestoFix=document.createElement('style');manifestoFix.textContent=`
 }
 `;document.head.appendChild(manifestoFix);
 
+const brandValuesStyles=document.createElement('style');brandValuesStyles.textContent=`
+.hero .tags.brand-values{width:min(860px,100%);margin-top:32px;display:block!important;}
+.brand-values-label{display:flex;align-items:center;gap:12px;margin-bottom:14px;color:#a98a67;font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;}
+.brand-values-label::after{content:'';height:1px;flex:1;background:linear-gradient(90deg,rgba(169,138,103,.36),transparent);}
+.brand-values-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+.brand-value-card{position:relative;overflow:hidden;border-radius:24px;padding:20px 18px 18px;border:1px solid rgba(169,138,103,.2);background:linear-gradient(145deg,rgba(255,255,255,.64),rgba(245,239,230,.7));box-shadow:0 18px 52px rgba(62,45,27,.08);display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;backdrop-filter:blur(12px);}
+.brand-value-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.52),transparent 32%),linear-gradient(180deg,rgba(255,255,255,.08),transparent);pointer-events:none;}
+.brand-value-icon{position:relative;z-index:1;width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:#1f2327;color:#f8f4ee;box-shadow:0 12px 28px rgba(31,35,39,.14);}
+.brand-value-icon svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+.brand-value-content{position:relative;z-index:1;}
+.brand-value-content h3{margin:0 0 6px;color:#1f2327;font-size:1rem;line-height:1.1;font-weight:900;letter-spacing:.02em;}
+.brand-value-content p{margin:0;color:rgba(31,35,39,.66);font-size:.92rem;line-height:1.45;}
+@media(max-width:860px){.brand-values-grid{grid-template-columns:1fr}.brand-value-card{border-radius:22px}.hero .tags.brand-values{margin-top:26px}}
+`;document.head.appendChild(brandValuesStyles);
+
+const heroTags=document.querySelector('.hero .tags');
+if(heroTags){
+  heroTags.classList.add('brand-values');
+  heroTags.innerHTML=`
+    <div class="brand-values-label">Atributos de marca</div>
+    <div class="brand-values-grid">
+      <article class="brand-value-card">
+        <span class="brand-value-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.5 12.5 5.8 11a3.1 3.1 0 0 1 4.4-4.4l.8.8.8-.8a3.1 3.1 0 0 1 4.4 4.4l-1.7 1.5"></path><path d="M3.5 14.5 8 19l3-3 3 3 6.5-6.5"></path><path d="M15.5 13.5h5"></path></svg></span>
+        <div class="brand-value-content"><h3>Sensibilidad</h3><p>Conexión emocional auténtica.</p></div>
+      </article>
+      <article class="brand-value-card">
+        <span class="brand-value-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18V6"></path><path d="M4 18h16"></path><path d="m7 15 3.5-4 3 2.7L19 7"></path><path d="M16.5 7H19v2.5"></path></svg></span>
+        <div class="brand-value-content"><h3>Estrategia</h3><p>Resultados medibles y sostenibles.</p></div>
+      </article>
+      <article class="brand-value-card">
+        <span class="brand-value-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M12 7v10"></path><path d="M7 12h10"></path><path d="M9 9.5c1.8 1.1 4.2 1.1 6 0"></path><path d="M9 14.5c1.8-1.1 4.2-1.1 6 0"></path></svg></span>
+        <div class="brand-value-content"><h3>Autenticidad</h3><p>Marcas con propósito real.</p></div>
+      </article>
+    </div>`;
+}
+
 const header=document.getElementById('header');window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>20),{passive:true});
 
 const reveals=document.querySelectorAll('.reveal');
