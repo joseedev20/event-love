@@ -30,6 +30,38 @@
       height:176px;
       filter:drop-shadow(0 18px 32px rgba(95,67,34,.22));
     }
+    .service-card{
+      display:block;
+      color:inherit;
+      cursor:pointer;
+    }
+    .service-card::after{
+      content:'Consultar por WhatsApp';
+      position:absolute;
+      left:28px;
+      right:28px;
+      bottom:24px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:38px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(31,35,39,.92);
+      color:#fff;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      opacity:0;
+      transform:translateY(8px);
+      transition:.22s;
+    }
+    .service-card:hover::after,
+    .service-card:focus-visible::after{
+      opacity:1;
+      transform:translateY(0);
+    }
     .method-graphic-wrap{
       display:grid;
       place-items:center;
@@ -45,6 +77,7 @@
     @media(max-width:640px){
       .logo-mark.giant{width:132px;height:132px;}
       .floating-mark .logo-mark.big{width:78px;height:78px;}
+      .service-card::after{opacity:1;transform:none;position:static;margin-top:22px;}
       .method-graphic{width:100%;max-height:none;border-radius:26px;}
       footer .logo-mark{width:44px;height:44px;}
     }
@@ -87,10 +120,10 @@
     <section class="section" id="servicios">
       <div class="heading reveal"><p class="kicker">Qué hacemos</p><h2>Alineamos propósito, diseño y estrategia.</h2><p>Convertimos ideas en acciones reales para que tu marca comunique con intención y conecte con profundidad.</p></div>
       <div class="cards">
-        <article class="card reveal"><span>01</span><h3>Identidad de marca</h3><p>Naming, tono de voz, universo visual, lineamientos y sistemas gráficos flexibles.</p></article>
-        <article class="card reveal"><span>02</span><h3>Estrategia de marca</h3><p>Propósito, posicionamiento, narrativa, diferenciadores y mapa de audiencias.</p></article>
-        <article class="card reveal"><span>03</span><h3>Experiencias</h3><p>Diseño de momentos, activaciones, rituales, lanzamientos y espacios memorables.</p></article>
-        <article class="card reveal"><span>04</span><h3>Comunidades</h3><p>Estrategias para convertir clientes en comunidad y marcas en relaciones sostenibles.</p></article>
+        <a class="card service-card reveal" href="https://wa.me/573123788524?text=Hola%2C%20me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20este%20servicio%3A%20Identidad%20de%20marca" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp sobre Identidad de marca"><span>01</span><h3>Identidad de marca</h3><p>Naming, tono de voz, universo visual, lineamientos y sistemas gráficos flexibles.</p></a>
+        <a class="card service-card reveal" href="https://wa.me/573123788524?text=Hola%2C%20me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20este%20servicio%3A%20Estrategia%20de%20marca" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp sobre Estrategia de marca"><span>02</span><h3>Estrategia de marca</h3><p>Propósito, posicionamiento, narrativa, diferenciadores y mapa de audiencias.</p></a>
+        <a class="card service-card reveal" href="https://wa.me/573123788524?text=Hola%2C%20me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20este%20servicio%3A%20Experiencias" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp sobre Experiencias"><span>03</span><h3>Experiencias</h3><p>Diseño de momentos, activaciones, rituales, lanzamientos y espacios memorables.</p></a>
+        <a class="card service-card reveal" href="https://wa.me/573123788524?text=Hola%2C%20me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20este%20servicio%3A%20Comunidades" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp sobre Comunidades"><span>04</span><h3>Comunidades</h3><p>Estrategias para convertir clientes en comunidad y marcas en relaciones sostenibles.</p></a>
       </div>
     </section>
 
