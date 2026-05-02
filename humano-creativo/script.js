@@ -37,7 +37,13 @@ body.plans-modal-open{overflow:hidden;}
 .plans-modal-panel .plans-header{margin-top:-22px;}
 .plans-modal-panel .plans-grid{align-items:stretch;}
 .plans-modal-panel .plan-card{box-shadow:0 18px 52px rgba(62,45,27,.12);}
-@media(max-width:640px){.plans-modal{padding:10px;align-items:end}.plans-modal-panel{max-height:90vh;border-radius:28px}.plans-close{top:12px;left:calc(100% - 58px);width:42px;height:42px}.plans-modal-panel #planes{padding:18px 14px 28px!important}.plans-modal-panel .plans-header{margin-top:-18px}}
+.plan-icons{display:flex!important;gap:10px!important;flex-wrap:wrap!important;align-items:center!important;}
+.plan-icons .plan-icon{width:44px!important;height:44px!important;border-radius:14px!important;display:grid!important;place-items:center!important;border:1px solid rgba(169,138,103,.22)!important;background:rgba(255,255,255,.62)!important;color:#1f2327!important;box-shadow:0 8px 22px rgba(62,45,27,.06)!important;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease!important;font-size:0!important;line-height:1!important;padding:0!important;}
+.plan-icons .plan-icon:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(62,45,27,.1)!important;border-color:rgba(169,138,103,.36)!important;}
+.plan-icons .plan-icon svg{width:20px!important;height:20px!important;stroke:currentColor!important;fill:none!important;stroke-width:1.9!important;stroke-linecap:round!important;stroke-linejoin:round!important;display:block!important;}
+.plan-card.featured .plan-icons .plan-icon{background:rgba(255,255,255,.08)!important;border-color:rgba(255,255,255,.18)!important;color:#f8f4ee!important;box-shadow:none!important;}
+.plan-card.featured .plan-icons .plan-icon:hover{border-color:rgba(229,201,165,.34)!important;transform:translateY(-2px);}
+@media(max-width:640px){.plans-modal{padding:10px;align-items:end}.plans-modal-panel{max-height:90vh;border-radius:28px}.plans-close{top:12px;left:calc(100% - 58px);width:42px;height:42px}.plans-modal-panel #planes{padding:18px 14px 28px!important}.plans-modal-panel .plans-header{margin-top:-18px}.plan-icons{gap:8px!important}.plan-icons .plan-icon{width:40px!important;height:40px!important;border-radius:12px!important}.plan-icons .plan-icon svg{width:18px!important;height:18px!important}}
 `;
 document.head.appendChild(plansModalStyles);
 
@@ -52,6 +58,19 @@ if(plansSection&&plansTrigger){
   document.body.appendChild(modal);
   modal.querySelector('.plans-modal-panel').appendChild(plansSection);
   plansSection.querySelectorAll('.reveal').forEach(el=>{el.classList.add('show');el.style.transitionDelay='0ms';});
+
+  const iconSvg={
+    instagram:'<svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="3.8"></circle><circle cx="17.2" cy="6.8" r="0.8" fill="currentColor" stroke="none"></circle></svg>',
+    whatsapp:'<svg viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.7 7.1L4 20l1.5-4A8 8 0 1 1 20 11.5Z"></path><path d="M9.4 9.2c.2-.4.5-.4.8-.4h.5c.2 0 .4 0 .5.4l.5 1.4c.1.2.1.4 0 .6l-.4.6c.6 1.1 1.4 1.9 2.5 2.5l.6-.4c.2-.1.4-.1.6 0l1.4.5c.3.1.4.3.4.5v.5c0 .3 0 .6-.4.8-.5.2-1 .3-1.5.2-2.8-.5-5.1-2.8-5.6-5.6-.1-.5 0-1 .2-1.4Z"></path></svg>',
+    content:'<svg viewBox="0 0 24 24"><path d="M4 20h16"></path><path d="M7 16l8.5-8.5 2 2L9 18H7v-2Z"></path></svg>',
+    megaphone:'<svg viewBox="0 0 24 24"><path d="M4 13V8.5a1 1 0 0 1 1-1H9l6-2v13l-6-2H5a1 1 0 0 1-1-1V13Z"></path><path d="M18 9.5a4 4 0 0 1 0 5"></path><path d="M19.8 7.5a7 7 0 0 1 0 9"></path></svg>',
+    experience:'<svg viewBox="0 0 24 24"><path d="M12 5a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"></path><path d="M4.5 19a7.5 7.5 0 0 1 15 0"></path><path d="M19 7l1.5 1.5L22 7"></path></svg>'
+  };
+  const iconSets=[['instagram','whatsapp','content','megaphone'],['instagram','whatsapp','content','megaphone','experience']];
+  plansSection.querySelectorAll('.plan-icons').forEach((group,index)=>{
+    group.setAttribute('aria-hidden','true');
+    group.innerHTML=(iconSets[index]||iconSets[0]).map(name=>`<span class="plan-icon" title="${name}">${iconSvg[name]}</span>`).join('');
+  });
 
   function openPlans(){
     modal.classList.add('open');
