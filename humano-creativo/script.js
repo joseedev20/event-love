@@ -1,3 +1,15 @@
+const manifestoFix=document.createElement('style');manifestoFix.textContent=`
+.manifesto-card{
+  background:linear-gradient(rgba(31,35,39,.88),rgba(31,35,39,.82)),radial-gradient(circle at 25% 20%,rgba(215,192,160,.18),transparent 24rem),#1f2327!important;
+  color:#f8f4ee!important;
+}
+.manifesto-card p{
+  color:#f8f4ee!important;
+  text-shadow:0 2px 10px rgba(0,0,0,.18);
+  line-height:.95!important;
+}
+`;document.head.appendChild(manifestoFix);
+
 const header=document.getElementById('header');window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>20),{passive:true});
 
 const reveals=document.querySelectorAll('.reveal');
