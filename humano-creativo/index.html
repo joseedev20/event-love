@@ -30,10 +30,6 @@
       height:176px;
       filter:drop-shadow(0 18px 32px rgba(95,67,34,.22));
     }
-    .center-mark .logo-mark{
-      width:78px;
-      height:78px;
-    }
     .creator-credit{
       display:inline-flex;
       align-items:center;
@@ -59,9 +55,22 @@
       background:#a98a67;
       box-shadow:0 0 0 5px rgba(169,138,103,.14);
     }
+    .method-graphic-wrap{
+      display:grid;
+      place-items:center;
+    }
+    .method-graphic{
+      display:block;
+      width:min(460px,100%);
+      max-height:720px;
+      object-fit:contain;
+      border-radius:32px;
+      box-shadow:0 30px 90px rgba(62,45,27,.14);
+    }
     @media(max-width:640px){
       .logo-mark.giant{width:132px;height:132px;}
       .floating-mark .logo-mark.big{width:78px;height:78px;}
+      .method-graphic{width:100%;max-height:none;border-radius:26px;}
       footer .logo-mark{width:44px;height:44px;}
     }
   </style>
@@ -113,7 +122,7 @@
 
     <section class="section method" id="metodo">
       <div class="reveal"><p class="kicker">Método</p><h2>Muchas marcas comunican… pero no conectan.</h2><p>Nosotros cambiamos eso combinando sensibilidad, claridad estratégica y una ejecución visual con intención.</p></div>
-      <div class="venn reveal"><div class="circle one">Propósito</div><div class="circle two">Diseño</div><div class="circle three">Estrategia</div><div class="center-mark"><img class="logo-mark" src="logo.svg" alt="Logo Humano Creativo"></div></div>
+      <div class="method-graphic-wrap reveal"><img class="method-graphic" src="method-graphic.svg" alt="Gráfico de método: propósito, diseño y estrategia"></div>
     </section>
 
     <section class="section"><div class="heading reveal"><p class="kicker">Proceso</p><h2>Una experiencia clara de principio a fin.</h2></div><div class="timeline"><article class="step reveal"><span>01</span><h3>Escuchamos</h3><p>Entendemos la historia, el contexto, los objetivos y las personas detrás de la marca.</p></article><article class="step reveal"><span>02</span><h3>Alineamos</h3><p>Ordenamos propósito, estrategia, mensaje y oportunidades de conexión.</p></article><article class="step reveal"><span>03</span><h3>Diseñamos</h3><p>Creamos un universo visual y verbal coherente, sensible y accionable.</p></article><article class="step reveal"><span>04</span><h3>Activamos</h3><p>Llevamos la marca a piezas, experiencias, campañas y puntos de contacto reales.</p></article></div></section>
