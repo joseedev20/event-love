@@ -13,6 +13,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
+    .logo-mark{
+      display:block;
+      width:40px;
+      height:40px;
+      object-fit:contain;
+      border-radius:50%;
+      filter:drop-shadow(0 14px 34px rgba(84,61,35,.15));
+    }
+    .logo-mark.big{
+      width:98px;
+      height:98px;
+    }
+    .logo-mark.giant{
+      width:176px;
+      height:176px;
+      filter:drop-shadow(0 18px 32px rgba(95,67,34,.22));
+    }
+    .center-mark .logo-mark{
+      width:78px;
+      height:78px;
+    }
     .creator-credit{
       display:inline-flex;
       align-items:center;
@@ -38,13 +59,18 @@
       background:#a98a67;
       box-shadow:0 0 0 5px rgba(169,138,103,.14);
     }
+    @media(max-width:640px){
+      .logo-mark.giant{width:132px;height:132px;}
+      .floating-mark .logo-mark.big{width:78px;height:78px;}
+      footer .logo-mark{width:44px;height:44px;}
+    }
   </style>
 </head>
 <body>
   <canvas id="cascade" aria-hidden="true"></canvas>
 
   <header class="header" id="header">
-    <a class="brand" href="#inicio"><span class="mark"><i></i><b></b></span><span>Humano Creativo</span></a>
+    <a class="brand" href="#inicio"><img class="logo-mark" src="logo.svg" alt="Logo Humano Creativo"><span>Humano Creativo</span></a>
     <nav><a href="#nosotros">Nosotros</a><a href="#servicios">Qué hacemos</a><a href="#metodo">Método</a><a href="#contacto">Contacto</a><a href="https://www.instagram.com/human_ocreativo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Humano Creativo">Instagram</a></nav>
     <a class="btn primary small" href="https://wa.me/573123788524" target="_blank" rel="noreferrer">Hablemos</a>
   </header>
@@ -60,9 +86,9 @@
         <div class="tags reveal"><span>Sensibilidad</span><span>Estrategia</span><span>Autenticidad</span></div>
       </div>
       <div class="hero-art reveal">
-        <div class="floating-mark"><span class="mark big"><i></i><b></b></span></div>
+        <div class="floating-mark"><img class="logo-mark big" src="logo.svg" alt="Logo Humano Creativo"></div>
         <div class="vertical-line"></div>
-        <div class="main-mark"><span class="mark giant"><i></i><b></b></span></div>
+        <div class="main-mark"><img class="logo-mark giant" src="logo.svg" alt="Logo Humano Creativo"></div>
         <div class="mini-card">Diseño centrado<strong>en lo humano</strong></div>
       </div>
     </section>
@@ -87,7 +113,7 @@
 
     <section class="section method" id="metodo">
       <div class="reveal"><p class="kicker">Método</p><h2>Muchas marcas comunican… pero no conectan.</h2><p>Nosotros cambiamos eso combinando sensibilidad, claridad estratégica y una ejecución visual con intención.</p></div>
-      <div class="venn reveal"><div class="circle one">Propósito</div><div class="circle two">Diseño</div><div class="circle three">Estrategia</div><div class="center-mark"><span class="mark"><i></i><b></b></span></div></div>
+      <div class="venn reveal"><div class="circle one">Propósito</div><div class="circle two">Diseño</div><div class="circle three">Estrategia</div><div class="center-mark"><img class="logo-mark" src="logo.svg" alt="Logo Humano Creativo"></div></div>
     </section>
 
     <section class="section"><div class="heading reveal"><p class="kicker">Proceso</p><h2>Una experiencia clara de principio a fin.</h2></div><div class="timeline"><article class="step reveal"><span>01</span><h3>Escuchamos</h3><p>Entendemos la historia, el contexto, los objetivos y las personas detrás de la marca.</p></article><article class="step reveal"><span>02</span><h3>Alineamos</h3><p>Ordenamos propósito, estrategia, mensaje y oportunidades de conexión.</p></article><article class="step reveal"><span>03</span><h3>Diseñamos</h3><p>Creamos un universo visual y verbal coherente, sensible y accionable.</p></article><article class="step reveal"><span>04</span><h3>Activamos</h3><p>Llevamos la marca a piezas, experiencias, campañas y puntos de contacto reales.</p></article></div></section>
@@ -97,7 +123,7 @@
     <section class="section" id="contacto"><div class="contact reveal"><p class="kicker">Contacto</p><h2>¿Listos para crear una marca que conecte?</h2><p>Cuéntanos qué estás construyendo y diseñemos juntos una experiencia con propósito.</p><div class="actions"><a class="btn primary" href="https://wa.me/573123788524" target="_blank" rel="noreferrer">Escribir por WhatsApp</a><a class="btn ghost" href="https://www.instagram.com/human_ocreativo/" target="_blank" rel="noreferrer">Ver Instagram</a></div><small>WhatsApp oficial: +57 312 3788524</small></div></section>
   </main>
 
-  <footer><span class="mark"><i></i><b></b></span><p>Humano Creativo · Diseño centrado en lo humano</p></footer>
+  <footer><img class="logo-mark" src="logo.svg" alt="Logo Humano Creativo"><p>Humano Creativo · Diseño centrado en lo humano</p></footer>
   <script src="script.js"></script>
 </body>
 </html>
