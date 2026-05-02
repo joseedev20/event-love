@@ -13,261 +13,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    .logo-mark{
-      display:block;
-      width:40px;
-      height:40px;
-      object-fit:contain;
-      border-radius:50%;
-      filter:drop-shadow(0 14px 34px rgba(84,61,35,.15));
-    }
-    .logo-mark.big{width:98px;height:98px;}
-    .logo-mark.giant{width:176px;height:176px;filter:drop-shadow(0 18px 32px rgba(95,67,34,.22));}
-    .service-card{display:block;color:inherit;cursor:pointer;}
-    .service-card::after{
-      content:'Consultar por WhatsApp';position:absolute;left:28px;right:28px;bottom:24px;display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:10px 14px;border-radius:999px;background:rgba(31,35,39,.92);color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:.22s;
-    }
-    .service-card:hover::after,.service-card:focus-visible::after{opacity:1;transform:translateY(0);}
+    .logo-mark{display:block;width:40px;height:40px;object-fit:contain;border-radius:50%;filter:drop-shadow(0 14px 34px rgba(84,61,35,.15))}.logo-mark.big{width:98px;height:98px}.logo-mark.giant{width:176px;height:176px;filter:drop-shadow(0 18px 32px rgba(95,67,34,.22))}
+    .service-card{display:block;color:inherit;cursor:pointer}.service-card::after{content:'Consultar por WhatsApp';position:absolute;left:28px;right:28px;bottom:24px;display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:10px 14px;border-radius:999px;background:rgba(31,35,39,.92);color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:.22s}.service-card:hover::after,.service-card:focus-visible::after{opacity:1;transform:translateY(0)}
 
-    .about-creative{
-      display:grid;
-      grid-template-columns:150px minmax(0,.9fr) minmax(320px,.9fr);
-      gap:36px;
-      align-items:center;
-    }
-    .about-copy{max-width:640px;}
-    .creative-loop{
-      position:relative;
-      min-height:540px;
-      display:grid;
-      grid-template-columns:1.1fr .82fr;
-      gap:18px;
-      align-items:stretch;
-      isolation:isolate;
-    }
-    .creative-loop::before{
-      content:'';
-      position:absolute;
-      inset:28px -10px 34px;
-      z-index:-1;
-      border-radius:44px;
-      background:radial-gradient(circle at 22% 18%,rgba(255,255,255,.75),transparent 22rem),radial-gradient(circle at 86% 68%,rgba(215,192,160,.38),transparent 18rem);
-      filter:blur(1px);
-    }
-    .creative-stack{display:grid;grid-template-rows:1fr 1fr;gap:18px;}
-    .creative-card{
-      position:relative;
-      overflow:hidden;
-      border:1px solid rgba(169,138,103,.24);
-      border-radius:32px;
-      background:linear-gradient(145deg,rgba(255,255,255,.66),rgba(237,226,212,.78));
-      box-shadow:0 24px 76px rgba(62,45,27,.12);
-      min-height:220px;
-    }
-    .creative-main{min-height:540px;}
-    .creative-card::before{
-      content:'';
-      position:absolute;
-      inset:0;
-      background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.38) 42%,transparent 58%),radial-gradient(circle at 18% 12%,rgba(169,138,103,.13),transparent 34%);
-      transform:translateX(-80%);
-      animation:creativeShine 7s ease-in-out infinite;
-    }
-    .creative-card::after{
-      content:'';
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(31,35,39,.05)),linear-gradient(90deg,rgba(169,138,103,.06) 1px,transparent 1px),linear-gradient(rgba(169,138,103,.05) 1px,transparent 1px);
-      background-size:auto,38px 38px,38px 38px;
-      opacity:.78;
-    }
-    .portrait-stage{
-      position:absolute;
-      inset:32px 24px 110px;
-      border-radius:28px;
-      background:linear-gradient(160deg,rgba(31,35,39,.9),rgba(31,35,39,.74)),radial-gradient(circle at 20% 24%,rgba(215,192,160,.28),transparent 16rem);
-      overflow:hidden;
-    }
-    .portrait-stage::before{
-      content:'';
-      position:absolute;
-      width:230px;
-      height:230px;
-      border-radius:50%;
-      right:-70px;
-      top:-55px;
-      border:1px solid rgba(215,192,160,.28);
-    }
-    .creative-person{
-      position:absolute;
-      width:82px;
-      height:118px;
-      left:50%;
-      top:50%;
-      transform:translate(-50%,-50%);
-      animation:personFloat 5.8s ease-in-out infinite;
-    }
-    .creative-person::before{
-      content:'';
-      position:absolute;
-      left:22px;
-      top:0;
-      width:38px;
-      height:38px;
-      border-radius:50%;
-      background:#d7c0a0;
-      box-shadow:0 0 0 8px rgba(215,192,160,.14);
-    }
-    .creative-person::after{
-      content:'';
-      position:absolute;
-      left:5px;
-      bottom:0;
-      width:72px;
-      height:76px;
-      border-radius:34px 34px 18px 18px;
-      background:linear-gradient(180deg,#f5efe6,#a98a67);
-    }
-    .person-two{left:28%;top:58%;transform:translate(-50%,-50%) scale(.86);animation-delay:-1.8s;opacity:.9;}
-    .person-three{left:73%;top:58%;transform:translate(-50%,-50%) scale(.86);animation-delay:-3.2s;opacity:.9;}
-    .creative-tools{
-      position:absolute;
-      left:24px;
-      right:24px;
-      bottom:28px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      z-index:2;
-    }
-    .creative-tools span{
-      padding:9px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.72);
-      border:1px solid rgba(169,138,103,.2);
-      color:rgba(31,35,39,.68);
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      backdrop-filter:blur(12px);
-    }
-    .creative-label{
-      position:absolute;
-      left:24px;
-      bottom:28px;
-      z-index:2;
-      color:#fff;
-      font-size:12px;
-      font-weight:900;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-    }
-    .creative-caption{
-      position:absolute;
-      left:24px;
-      right:24px;
-      bottom:58px;
-      z-index:2;
-      color:rgba(255,255,255,.76);
-      font-size:13px;
-      line-height:1.5;
-    }
-    .paper-elements{position:absolute;inset:28px;z-index:1;}
-    .paper-note{
-      position:absolute;
-      width:112px;
-      height:86px;
-      border-radius:16px;
-      background:rgba(255,255,255,.78);
-      border:1px solid rgba(169,138,103,.22);
-      box-shadow:0 16px 34px rgba(62,45,27,.1);
-      animation:paperDrift 6.5s ease-in-out infinite;
-    }
-    .paper-note::before,.paper-note::after{content:'';position:absolute;left:18px;right:18px;height:2px;background:rgba(169,138,103,.36);border-radius:3px;}
-    .paper-note::before{top:28px;}.paper-note::after{top:44px;width:48px;right:auto;}
-    .paper-one{left:0;top:8px;transform:rotate(-6deg);}
-    .paper-two{right:0;bottom:10px;transform:rotate(7deg);animation-delay:-2s;}
-    .craft-hand{
-      position:absolute;
-      left:44px;
-      bottom:42px;
-      width:92px;
-      height:28px;
-      border-radius:999px;
-      background:linear-gradient(90deg,#d7c0a0,#b99368);
-      transform:rotate(-18deg);
-      animation:handMove 4.8s ease-in-out infinite;
-    }
-    .craft-hand::after{
-      content:'';
-      position:absolute;
-      right:-36px;
-      top:10px;
-      width:54px;
-      height:6px;
-      border-radius:999px;
-      background:#1f2327;
-    }
-    .moodboard-grid{
-      position:absolute;
-      inset:26px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      z-index:1;
-    }
-    .mood-tile{border-radius:18px;background:rgba(255,255,255,.6);border:1px solid rgba(169,138,103,.22);animation:tilePulse 5.6s ease-in-out infinite;}
-    .mood-tile:nth-child(2){background:#e8d6bf;animation-delay:-1.4s;}.mood-tile:nth-child(3){background:#1f2327;animation-delay:-2.6s;}.mood-tile:nth-child(4){background:#d7c0a0;animation-delay:-3.2s;}
-    .small-label{
-      position:absolute;
-      left:22px;
-      bottom:20px;
-      z-index:3;
-      padding:9px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.72);
-      border:1px solid rgba(169,138,103,.22);
-      font-size:11px;
-      font-weight:900;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-    }
-    @keyframes creativeShine{0%,30%{transform:translateX(-85%)}55%,100%{transform:translateX(85%)}}
-    @keyframes personFloat{0%,100%{margin-top:0}50%{margin-top:-14px}}
-    @keyframes paperDrift{0%,100%{margin-top:0}50%{margin-top:-12px}}
-    @keyframes handMove{0%,100%{transform:rotate(-18deg) translateX(0)}50%{transform:rotate(-12deg) translateX(28px)}}
-    @keyframes tilePulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(.96);opacity:.72}}
+    .about-creative{display:grid;grid-template-columns:150px minmax(0,.9fr) minmax(320px,.95fr);gap:36px;align-items:center}.about-copy{max-width:640px}.about-photo-loop{position:relative;isolation:isolate}.photo-frame{position:relative;min-height:560px;border-radius:34px;overflow:hidden;border:1px solid rgba(169,138,103,.22);background:linear-gradient(145deg,rgba(255,255,255,.5),rgba(237,226,212,.72));box-shadow:0 28px 80px rgba(62,45,27,.14)}.photo-frame::before{content:'';position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.02) 38%,rgba(255,255,255,.72) 48%,rgba(255,255,255,.08) 58%,transparent 72%);mix-blend-mode:screen;opacity:0;animation:editorialFlash 6.4s infinite}.photo-frame::after{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(31,35,39,.12)),radial-gradient(circle at top left,rgba(255,255,255,.14),transparent 35%)}.blink-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.02);filter:saturate(.94) contrast(1.03) brightness(.98);animation:photoBlink 12s infinite}.blink-photo:nth-child(1){animation-delay:0s}.blink-photo:nth-child(2){animation-delay:3s}.blink-photo:nth-child(3){animation-delay:6s}.blink-photo:nth-child(4){animation-delay:9s}.photo-tag{position:absolute;left:18px;bottom:18px;z-index:4;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.78);border:1px solid rgba(169,138,103,.2);color:rgba(31,35,39,.72);font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;backdrop-filter:blur(12px);box-shadow:0 12px 24px rgba(62,45,27,.1)}.photo-grain{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.12;background-image:radial-gradient(circle at 15% 25%,rgba(255,255,255,.9) 0 1px,transparent 1px),radial-gradient(circle at 72% 63%,rgba(31,35,39,.8) 0 1px,transparent 1px);background-size:24px 24px,31px 31px;mix-blend-mode:soft-light}@keyframes photoBlink{0%,20%{opacity:1;transform:scale(1)}24%,100%{opacity:0;transform:scale(1.018)}}@keyframes editorialFlash{0%,18%,100%{opacity:0;transform:translateX(-120%)}20%{opacity:.72;transform:translateX(-26%)}23%{opacity:0;transform:translateX(118%)}50%{opacity:0;transform:translateX(-120%)}52%{opacity:.42;transform:translateX(15%)}54%{opacity:0;transform:translateX(118%)}}
 
-    .method-minimal{display:grid;grid-template-columns:minmax(0,.85fr) minmax(340px,1fr);gap:56px;align-items:center;}
-    .minimal-diagram{position:relative;min-height:520px;display:flex;align-items:center;justify-content:center;isolation:isolate;}
-    .minimal-diagram::before{content:'';position:absolute;width:78%;height:78%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.56),rgba(215,192,160,.12),transparent 68%);z-index:-1;filter:blur(2px);}
-    .minimal-circle{position:absolute;width:260px;height:260px;border:1.5px solid rgba(169,138,103,.48);border-radius:50%;display:flex;align-items:flex-start;justify-content:center;padding-top:44px;background:rgba(255,255,255,.11);color:rgba(31,35,39,.78);font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;backdrop-filter:blur(2px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);}
-    .minimal-top{top:20px;left:50%;transform:translateX(-50%);}.minimal-left{bottom:30px;left:30px;}.minimal-right{bottom:30px;right:30px;}
-    .minimal-center{position:absolute;left:50%;top:56%;transform:translate(-50%,-50%);width:132px;height:132px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;background:linear-gradient(180deg,rgba(215,192,160,.96),rgba(169,138,103,.86));color:#1f2327;font-weight:900;font-size:13px;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 20px 56px rgba(88,63,36,.16);}
-    .minimal-center::after{content:'';position:absolute;inset:10px;border:1px solid rgba(31,35,39,.14);border-radius:50%;}
-    .manifesto-card{background:linear-gradient(rgba(31,35,39,.88),rgba(31,35,39,.82)),radial-gradient(circle at 25% 20%,rgba(215,192,160,.18),transparent 24rem),#1f2327!important;color:#f8f4ee!important;}
-    .manifesto-card p{color:#f8f4ee!important;text-shadow:0 2px 10px rgba(0,0,0,.18);line-height:.95!important;}
-    @media(max-width:980px){
-      .about-creative,.method-minimal{grid-template-columns:1fr;}
-      .creative-loop{min-height:520px;}
-      .minimal-diagram{min-height:460px;}
-    }
-    @media(max-width:640px){
-      .logo-mark.giant{width:132px;height:132px;}
-      .floating-mark .logo-mark.big{width:78px;height:78px;}
-      .service-card::after{opacity:1;transform:none;position:static;margin-top:22px;}
-      .creative-loop{grid-template-columns:1fr;min-height:auto;}
-      .creative-main{min-height:390px;}
-      .creative-stack{grid-template-rows:auto;}
-      .creative-card{min-height:220px;border-radius:26px;}
-      .about-creative{gap:24px;}
-      .minimal-diagram{min-height:390px;transform:scale(.9);transform-origin:center;}
-      .minimal-circle{width:220px;height:220px;font-size:12px;padding-top:36px;}
-      .minimal-left{left:0;bottom:20px;}.minimal-right{right:0;bottom:20px;}.minimal-center{width:110px;height:110px;font-size:12px;}
-      footer .logo-mark{width:44px;height:44px;}
-    }
+    .method-minimal{display:grid;grid-template-columns:minmax(0,.85fr) minmax(340px,1fr);gap:56px;align-items:center}.minimal-diagram{position:relative;min-height:520px;display:flex;align-items:center;justify-content:center;isolation:isolate}.minimal-diagram::before{content:'';position:absolute;width:78%;height:78%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.56),rgba(215,192,160,.12),transparent 68%);z-index:-1;filter:blur(2px)}.minimal-circle{position:absolute;width:260px;height:260px;border:1.5px solid rgba(169,138,103,.48);border-radius:50%;display:flex;align-items:flex-start;justify-content:center;padding-top:44px;background:rgba(255,255,255,.11);color:rgba(31,35,39,.78);font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;backdrop-filter:blur(2px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}.minimal-top{top:20px;left:50%;transform:translateX(-50%)}.minimal-left{bottom:30px;left:30px}.minimal-right{bottom:30px;right:30px}.minimal-center{position:absolute;left:50%;top:56%;transform:translate(-50%,-50%);width:132px;height:132px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;background:linear-gradient(180deg,rgba(215,192,160,.96),rgba(169,138,103,.86));color:#1f2327;font-weight:900;font-size:13px;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 20px 56px rgba(88,63,36,.16)}.minimal-center::after{content:'';position:absolute;inset:10px;border:1px solid rgba(31,35,39,.14);border-radius:50%}.manifesto-card{background:linear-gradient(rgba(31,35,39,.88),rgba(31,35,39,.82)),radial-gradient(circle at 25% 20%,rgba(215,192,160,.18),transparent 24rem),#1f2327!important;color:#f8f4ee!important}.manifesto-card p{color:#f8f4ee!important;text-shadow:0 2px 10px rgba(0,0,0,.18);line-height:.95!important}
+    @media(max-width:980px){.about-creative,.method-minimal{grid-template-columns:1fr}.photo-frame{min-height:500px}.minimal-diagram{min-height:460px}}
+    @media(max-width:640px){.logo-mark.giant{width:132px;height:132px}.floating-mark .logo-mark.big{width:78px;height:78px}.service-card::after{opacity:1;transform:none;position:static;margin-top:22px}.photo-frame{min-height:380px;border-radius:26px}.photo-tag{font-size:10px;padding:9px 12px}.about-creative{gap:24px}.minimal-diagram{min-height:390px;transform:scale(.9);transform-origin:center}.minimal-circle{width:220px;height:220px;font-size:12px;padding-top:36px}.minimal-left{left:0;bottom:20px}.minimal-right{right:0;bottom:20px}.minimal-center{width:110px;height:110px;font-size:12px}footer .logo-mark{width:44px;height:44px}}
   </style>
 </head>
 <body>
@@ -304,35 +57,15 @@
         <h2>Somos un ecosistema creativo donde lo humano y lo estratégico se unen.</h2>
         <p>Diseñamos marcas que no solo se ven bien: se sienten claras, cercanas y memorables. Acompañamos a empresas, emprendedores y comunidades a encontrar una voz auténtica, una presencia coherente y experiencias que generen vínculo.</p>
       </div>
-      <div class="creative-loop reveal" aria-label="Animación visual de personas creativas, procesos artesanales y dirección profesional">
-        <div class="creative-card creative-main">
-          <div class="portrait-stage">
-            <div class="creative-person person-two"></div>
-            <div class="creative-person"></div>
-            <div class="creative-person person-three"></div>
-          </div>
-          <p class="creative-caption">Perfiles creativos, pensamiento estratégico y sensibilidad humana trabajando en una misma dirección.</p>
-          <span class="creative-label">Creatividad humana</span>
+      <div class="about-photo-loop reveal" aria-label="Galería animada de perfiles creativos">
+        <div class="photo-frame">
+          <img class="blink-photo" src="https://unsplash.com/photos/9pIkaC1fjEY/download?force=true&w=900" alt="Personas creativas colaborando en un estudio de diseño">
+          <img class="blink-photo" src="https://unsplash.com/photos/Wj1-mP6_mLs/download?force=true&w=900" alt="Equipo creativo revisando bocetos en un estudio">
+          <img class="blink-photo" src="https://unsplash.com/photos/cLOxE62ku7g/download?force=true&w=900" alt="Equipo de diseño reunido alrededor de una mesa creativa">
+          <img class="blink-photo" src="https://unsplash.com/photos/9tn3JFeAc08/download?force=true&w=900" alt="Personas creativas conversando en una sesión de trabajo">
+          <span class="photo-grain"></span>
         </div>
-        <div class="creative-stack">
-          <div class="creative-card">
-            <div class="paper-elements">
-              <div class="paper-note paper-one"></div>
-              <div class="paper-note paper-two"></div>
-              <div class="craft-hand"></div>
-            </div>
-            <span class="small-label">Hecho a mano</span>
-          </div>
-          <div class="creative-card">
-            <div class="moodboard-grid">
-              <span class="mood-tile"></span>
-              <span class="mood-tile"></span>
-              <span class="mood-tile"></span>
-              <span class="mood-tile"></span>
-            </div>
-            <span class="small-label">Dirección creativa</span>
-          </div>
-        </div>
+        <div class="photo-tag">Creatividad humana</div>
       </div>
     </section>
 
@@ -347,17 +80,8 @@
     </section>
 
     <section class="section method-minimal" id="metodo">
-      <div class="reveal">
-        <p class="kicker">Método</p>
-        <h2>Propósito, diseño y estrategia en equilibrio.</h2>
-        <p>Cuando estos tres elementos se alinean, una marca deja de solo comunicar y empieza a conectar.</p>
-      </div>
-      <div class="minimal-diagram reveal" aria-label="Diagrama del método de Humano Creativo: propósito, diseño, estrategia y conexión">
-        <div class="minimal-circle minimal-top">Propósito</div>
-        <div class="minimal-circle minimal-left">Diseño</div>
-        <div class="minimal-circle minimal-right">Estrategia</div>
-        <div class="minimal-center">Conexión</div>
-      </div>
+      <div class="reveal"><p class="kicker">Método</p><h2>Propósito, diseño y estrategia en equilibrio.</h2><p>Cuando estos tres elementos se alinean, una marca deja de solo comunicar y empieza a conectar.</p></div>
+      <div class="minimal-diagram reveal" aria-label="Diagrama del método de Humano Creativo: propósito, diseño, estrategia y conexión"><div class="minimal-circle minimal-top">Propósito</div><div class="minimal-circle minimal-left">Diseño</div><div class="minimal-circle minimal-right">Estrategia</div><div class="minimal-center">Conexión</div></div>
     </section>
 
     <section class="section"><div class="heading reveal"><p class="kicker">Proceso</p><h2>Una experiencia clara de principio a fin.</h2></div><div class="timeline"><article class="step reveal"><span>01</span><h3>Escuchamos</h3><p>Entendemos la historia, el contexto, los objetivos y las personas detrás de la marca.</p></article><article class="step reveal"><span>02</span><h3>Alineamos</h3><p>Ordenamos propósito, estrategia, mensaje y oportunidades de conexión.</p></article><article class="step reveal"><span>03</span><h3>Diseñamos</h3><p>Creamos un universo visual y verbal coherente, sensible y accionable.</p></article><article class="step reveal"><span>04</span><h3>Activamos</h3><p>Llevamos la marca a piezas, experiencias, campañas y puntos de contacto reales.</p></article></div></section>
