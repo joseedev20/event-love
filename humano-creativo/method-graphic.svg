@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Diagrama Humano Creativo</title>
+  <desc id="desc">Gráfico con tres círculos que representan propósito, diseño y estrategia.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8f3ec"/>
+      <stop offset="100%" stop-color="#efe5d8"/>
+    </linearGradient>
+    <linearGradient id="centerFill" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#eadfce"/>
+      <stop offset="100%" stop-color="#dcc8af"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#7f6a50" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="1200" rx="36" fill="url(#paper)"/>
+  <path d="M850 0c22 95 31 226 28 372-2 101-6 201-11 301-7 144-18 289-38 441h71V0Z" fill="#f0e6d8" opacity="0.92"/>
+  <path d="M0 0c72 10 144 29 214 60 58 26 104 56 142 84 32 24 61 50 91 80" fill="none" opacity="0.13" stroke="#b29366" stroke-width="14" stroke-linecap="round"/>
+
+  <g transform="translate(450 126)">
+    <circle r="52" fill="#e5c9a5"/>
+    <circle r="26" fill="#212121"/>
+    <ellipse rx="17" ry="25" fill="#e5c9a5"/>
+    <rect x="-2.4" y="-42" width="4.8" height="84" rx="2.4" fill="#212121"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="450" y="255" font-family="Cormorant Garamond, Georgia, serif" font-size="88" fill="#b08c63">Alineamos</text>
+    <text x="450" y="335" font-family="Cormorant Garamond, Georgia, serif" font-size="84" fill="#1f2327">propósito, diseño</text>
+    <text x="450" y="415" font-family="Cormorant Garamond, Georgia, serif" font-size="84" fill="#1f2327">y estrategia.</text>
+    <line x1="405" x2="495" y1="468" y2="468" stroke="#b08c63" stroke-width="3" stroke-linecap="round"/>
+    <text x="450" y="542" font-family="Cormorant Garamond, Georgia, serif" font-size="62" fill="#1f2327">Convertimos ideas</text>
+    <text x="450" y="606" font-family="Cormorant Garamond, Georgia, serif" font-size="62" fill="#1f2327">en <tspan fill="#b08c63">acciones reales.</tspan></text>
+  </g>
+
+  <g transform="translate(0 88)" filter="url(#softShadow)">
+    <g fill="none" stroke="#b29366" stroke-width="2.4">
+      <circle cx="450" cy="690" r="150"/>
+      <circle cx="312" cy="860" r="150"/>
+      <circle cx="588" cy="860" r="150"/>
+    </g>
+    <path d="M450 735C410 777 384 818 384 870s26 93 66 135c40-42 66-83 66-135s-26-93-66-135Z" fill="url(#centerFill)" stroke="#b29366" stroke-width="2.4"/>
+
+    <g text-anchor="middle" fill="#1f2327">
+      <text x="450" y="630" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="600" letter-spacing="4">PROPÓSITO</text>
+      <path d="M450 681l10 24 26 4-19 18 5 26-22-12-22 12 5-26-19-18 26-4z" transform="scale(.52) translate(415 640)" fill="none" stroke="#b29366" stroke-width="4"/>
+
+      <text x="252" y="866" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="600" letter-spacing="4">DISEÑO</text>
+      <g transform="translate(252 950) rotate(-12)" stroke="#b29366" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M-26 18L12-20l16 16-38 38-20 4z"/>
+        <path d="M6-26l16 16"/>
+      </g>
+
+      <text x="648" y="866" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="600" letter-spacing="4">ESTRATEGIA</text>
+      <g transform="translate(648 950)" stroke="#b29366" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="0" cy="0" r="29"/>
+        <circle cx="0" cy="0" r="14"/>
+        <path d="M0 0L30-24"/>
+        <path d="M22-28h20v20"/>
+      </g>
+    </g>
+
+    <g transform="translate(450 880)">
+      <circle r="42" fill="transparent"/>
+      <circle r="31" fill="#212121"/>
+      <ellipse rx="20" ry="29" fill="#dcc8af"/>
+      <rect x="-3" y="-50" width="6" height="100" rx="3" fill="#212121"/>
+    </g>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="450" y="1110" font-family="Inter, Arial, sans-serif" font-size="24" fill="#1f2327" font-weight="500" letter-spacing="10">DISEÑO CENTRADO</text>
+    <text x="450" y="1146" font-family="Inter, Arial, sans-serif" font-size="24" fill="#1f2327" font-weight="500" letter-spacing="10">EN LO HUMANO</text>
+    <line x1="404" x2="496" y1="1176" y2="1176" stroke="#b08c63" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>
