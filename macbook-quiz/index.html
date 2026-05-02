@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- Optimizado para iPhone / Safari -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Mac Quiz" />
+  <meta name="theme-color" content="#0b1020" />
+
+  <title>Quiz MacBook Air M2 vs M5</title>
+
+  <style>
+    :root {
+      --bg: #090d1a;
+      --card: rgba(255, 255, 255, 0.09);
+      --card2: rgba(255, 255, 255, 0.14);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --line: rgba(255, 255, 255, 0.18);
+      --accent: #7dd3fc;
+      --accent2: #c084fc;
+      --green: #86efac;
+      --yellow: #fde68a;
+      --red: #fca5a5;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100svh;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(125, 211, 252, 0.25), transparent 34%),
+        radial-gradient(circle at top right, rgba(192, 132, 252, 0.22), transparent 32%),
+        linear-gradient(135deg, #080b16 0%, #111827 58%, #0f172a 100%);
+      padding:
+        max(16px, env(safe-area-inset-top))
+        max(14px, env(safe-area-inset-right))
+        max(22px, env(safe-area-inset-bottom))
+        max(14px, env(safe-area-inset-left));
+      overflow-x: hidden;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 22px 18px;
+      border-radius: 28px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      margin-bottom: 14px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      right: -80px;
+      bottom: -90px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(125, 211, 252, 0.3), rgba(192, 132, 252, 0.35));
+      filter: blur(3px);
+      pointer-events: none;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 14px;
+      background: rgba(15, 23, 42, 0.35);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 10vw, 48px);
+      letter-spacing: -0.07em;
+      line-height: 0.94;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+
+    .score {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .score-card {
+      background: rgba(255, 255, 255, 0.075);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 13px;
+      min-height: 86px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .score-card strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .score-card span {
+      display: block;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .mini-bar {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.09);
+      overflow: hidden;
+      margin-top: 8px;
+      border: 1px solid var(--line);
+    }
+
+    .mini-bar i {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: inherit;
+      transition: width 220ms ease;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 17px;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 9px;
+    }
+
+    .progress {
+      width: 100%;
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      margin-bottom: 19px;
+    }
+
+    .progress i {
+      display: block;
+      height: 100%;
+      width: 0%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: width 220ms ease;
+    }
+
+    h2 {
+      margin: 0 0 15px;
+      font-size: clamp(24px, 7vw, 34px);
+      line-height: 1.06;
+      letter-spacing: -0.055em;
+    }
+
+    .options {
+      display: grid;
+      gap: 11px;
+    }
+
+    .option {
+      width: 100%;
+      appearance: none;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      text-align: left;
+      border-radius: 20px;
+      padding: 16px;
+      min-height: 76px;
+      font-size: 16px;
+      line-height: 1.28;
+      font-weight: 720;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .option:active {
+      transform: scale(0.985);
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(125, 211, 252, 0.75);
+    }
+
+    .option small {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.32;
+    }
+
+    .nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
+      margin-top: 15px;
+    }
+
+    .nav button,
+    .primary {
+      min-height: 48px;
+      border-radius: 17px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      font-weight: 850;
+      font-size: 15px;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .primary {
+      width: 100%;
+      border: 0;
+      color: #07111f;
+      background: linear-gradient(135deg, rgba(125, 211, 252, 1), rgba(192, 132, 252, 1));
+      margin-top: 15px;
+    }
+
+    button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .result {
+      display: none;
+    }
+
+    .winner {
+      display: inline-flex;
+      padding: 9px 12px;
+      border-radius: 999px;
+      color: var(--green);
+      background: rgba(134, 239, 172, 0.11);
+      border: 1px solid rgba(134, 239, 172, 0.34);
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 13px;
+    }
+
+    .result p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .rec {
+      margin-top: 14px;
+      display: grid;
+      gap: 11px;
+    }
+
+    .rec-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 21px;
+      padding: 15px;
+    }
+
+    .rec-card h3 {
+      margin: 0 0 9px;
+      font-size: 17px;
+      letter-spacing: -0.025em;
+    }
+
+    .rec-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.52;
+    }
+
+    details {
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 18px;
+      padding: 13px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    summary {
+      color: var(--text);
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .facts {
+      margin-top: 14px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .fact {
+      border: 1px solid var(--line);
+      background: rgba(15, 23, 42, 0.35);
+      border-radius: 18px;
+      padding: 13px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .fact strong {
+      color: var(--text);
+    }
+
+    .ios-tip {
+      margin: 14px 0 0;
+      color: #94a3b8;
+      font-size: 12px;
+      line-height: 1.45;
+      text-align: center;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  </style>
+</head>
+
+<body>
+  <main class="app">
+    <section class="hero">
+      <div class="pill">📱 Optimizado para iPhone</div>
+      <h1>¿MacBook Air M2 o M5?</h1>
+      <p>
+        Responde 15 preguntas tocando una opción. Al final te dice cuál te conviene más según precio,
+        programación, IA, batería, vida útil y uso real.
+      </p>
+    </section>
+
+    <section class="score" aria-label="Puntaje actual">
+      <div class="score-card">
+        <strong>MacBook Air M2</strong>
+        <span id="m2Score">0</span>
+        <div class="mini-bar"><i id="m2Bar"></i></div>
+      </div>
+
+      <div class="score-card">
+        <strong>MacBook Air M5</strong>
+        <span id="m5Score">0</span>
+        <div class="mini-bar"><i id="m5Bar"></i></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div id="quiz">
+        <div class="top-row">
+          <span id="stepLabel">Pregunta 1 de 15</span>
+          <span id="percentLabel">0%</span>
+        </div>
+
+        <div class="progress"><i id="progress"></i></div>
+
+        <h2 id="questionText"></h2>
+        <div class="options" id="options"></div>
+
+        <div class="nav">
+          <button id="backBtn">Atrás</button>
+          <button id="restartBtn">Reiniciar</button>
+        </div>
+      </div>
+
+      <div id="result" class="result">
+        <div class="winner" id="winnerBadge"></div>
+        <h2 id="resultTitle"></h2>
+        <p id="resultText"></p>
+
+        <div class="rec" id="recommendations"></div>
+
+        <details>
+          <summary>Ver mis respuestas</summary>
+          <div id="history"></div>
+        </details>
+
+        <button class="primary" id="restartFromResult">Volver a jugar</button>
+      </div>
+    </section>
+
+    <section class="facts">
+      <div class="fact">
+        <strong>Air M2:</strong> buena si quieres ahorrar, tu uso es liviano/medio y la consigues barata en buen estado.
+      </div>
+      <div class="fact">
+        <strong>Air M5:</strong> mejor si vas a programar fuerte, usar IA, multitarea pesada o quieres más años de vida útil.
+      </div>
+      <div class="fact">
+        <strong>Regla práctica:</strong> si la diferencia de precio es pequeña, M5. Si la M2 está muy barata y tiene buena batería, M2.
+      </div>
+    </section>
+
+    <p class="ios-tip">
+      Tip iPhone: abre esta página en Safari. Para dejarla como app, toca Compartir → “Agregar a pantalla de inicio”.
+    </p>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        q: "1. ¿Cuál será tu uso principal?",
+        options: [
+          { text: "Navegar, estudiar, Office, reuniones y tareas normales.", hint: "Uso liviano.", m2: 4, m5: 1 },
+          { text: "Programar web, usar VS Code, navegador y bases de datos pequeñas.", hint: "Uso medio.", m2: 2, m5: 3 },
+          { text: "Programación pesada: Docker, emuladores, Xcode, builds grandes o muchas apps a la vez.", hint: "Uso exigente.", m2: 0, m5: 6 }
+        ]
+      },
+      {
+        q: "2. ¿Qué pesa más en tu decisión?",
+        options: [
+          { text: "Ahorrar lo máximo posible.", hint: "Comprar por valor/precio.", m2: 6, m5: 0 },
+          { text: "Pagar más, pero tener algo más nuevo y durable.", hint: "Compra a largo plazo.", m2: 0, m5: 5 },
+          { text: "Equilibrio: no quiero gastar de más, pero tampoco quedarme corto.", hint: "Balance.", m2: 2, m5: 3 }
+        ]
+      },
+      {
+        q: "3. ¿Cuántos años quieres quedarte con la Mac?",
+        options: [
+          { text: "1 a 2 años.", hint: "Uso temporal.", m2: 4, m5: 1 },
+          { text: "3 a 4 años.", hint: "Mediano plazo.", m2: 2, m5: 3 },
+          { text: "5 años o más.", hint: "Largo plazo.", m2: 0, m5: 6 }
+        ]
+      },
+      {
+        q: "4. ¿La comprarías usada?",
+        options: [
+          { text: "Sí, si está barata y en buen estado.", hint: "La M2 puede tener sentido.", m2: 5, m5: 0 },
+          { text: "Preferiría nueva, con garantía y batería sin desgaste.", hint: "Mejor M5.", m2: 0, m5: 5 },
+          { text: "Me da igual, depende del precio.", hint: "Comparar costo real.", m2: 3, m5: 2 }
+        ]
+      },
+      {
+        q: "5. ¿Cuánta multitarea haces?",
+        options: [
+          { text: "Pocas pestañas y 2 o 3 apps abiertas.", hint: "Liviano.", m2: 4, m5: 1 },
+          { text: "Muchas pestañas, editor, WhatsApp, reuniones, Notion/Excel.", hint: "Medio.", m2: 2, m5: 3 },
+          { text: "Muchas apps pesadas al mismo tiempo.", hint: "Necesitas más margen.", m2: 0, m5: 6 }
+        ]
+      },
+      {
+        q: "6. Para programación, ¿qué tanto usarás herramientas pesadas?",
+        options: [
+          { text: "Casi nada, solo frontend/backend ligero.", hint: "M2 puede ir bien.", m2: 4, m5: 1 },
+          { text: "A veces Docker, bases locales o simuladores.", hint: "M5 tiene más margen.", m2: 1, m5: 4 },
+          { text: "Frecuente: Docker, emuladores, IA local, builds, contenedores.", hint: "M5 recomendado.", m2: 0, m5: 6 }
+        ]
+      },
+      {
+        q: "7. ¿Harás edición de video, foto o diseño?",
+        options: [
+          { text: "No, casi nunca.", hint: "No necesitas lo último.", m2: 4, m5: 1 },
+          { text: "Sí, pero ocasional: Canva, Photoshop, clips cortos.", hint: "Ambas sirven.", m2: 2, m5: 3 },
+          { text: "Sí, frecuente: 4K, efectos, Lightroom, Final Cut o proyectos pesados.", hint: "M5 conviene más.", m2: 0, m5: 6 }
+        ]
+      },
+      {
+        q: "8. ¿Te interesa usar IA local o funciones de IA más exigentes?",
+        options: [
+          { text: "No mucho.", hint: "No es prioridad.", m2: 4, m5: 1 },
+          { text: "Sí, pero de forma ocasional.", hint: "M5 suma.", m2: 1, m5: 4 },
+          { text: "Sí, quiero experimentar con modelos, automatizaciones y herramientas IA.", hint: "M5 mucho mejor.", m2: 0, m5: 6 }
+        ]
+      },
+      {
+        q: "9. ¿Qué tan importante es la reventa?",
+        options: [
+          { text: "No me importa tanto.", hint: "Puedes comprar más barato.", m2: 3, m5: 1 },
+          { text: "Me importa bastante.", hint: "Modelo más nuevo suele envejecer mejor.", m2: 0, m5: 4 },
+          { text: "La vendería pronto si aparece una mejor oportunidad.", hint: "Precio de entrada importa.", m2: 4, m5: 1 }
+        ]
+      },
+      {
+        q: "10. ¿Necesitas conectar pantallas y accesorios modernos?",
+        options: [
+          { text: "Solo una pantalla o accesorios básicos.", hint: "M2 suficiente.", m2: 4, m5: 1 },
+          { text: "Varios accesorios USB-C, monitor, hub, discos externos.", hint: "M5 tiene ventaja por estándar más reciente.", m2: 1, m5: 4 },
+          { text: "Quiero la mejor compatibilidad posible hacia futuro.", hint: "Mejor M5.", m2: 0, m5: 5 }
+        ]
+      },
+      {
+        q: "11. ¿Qué tan sensible eres al rendimiento?",
+        options: [
+          { text: "Mientras sea fluida para tareas normales, estoy bien.", hint: "M2 cumple.", m2: 5, m5: 0 },
+          { text: "Me molesta esperar, pero no hago trabajo extremo.", hint: "M5 ayuda.", m2: 2, m5: 3 },
+          { text: "Quiero lo más rápido posible dentro de una Air.", hint: "M5.", m2: 0, m5: 6 }
+        ]
+      },
+      {
+        q: "12. ¿Qué tan importante es la batería?",
+        options: [
+          { text: "Normal, casi siempre tengo cargador.", hint: "Ambas van bien.", m2: 3, m5: 2 },
+          { text: "Muy importante, estudio/trabajo fuera todo el día.", hint: "La M5 nueva reduce riesgo de batería degradada.", m2: 1, m5: 4 },
+          { text: "Me preocupa comprar usada con batería ya gastada.", hint: "M5 nueva gana.", m2: 0, m5: 5 }
+        ]
+      },
+      {
+        q: "13. ¿Cuál escenario describe mejor tu compra?",
+        options: [
+          { text: "Encontré una M2 muy barata.", hint: "Puede ser la mejor compra.", m2: 6, m5: 0 },
+          { text: "La diferencia de precio con la M5 no es tan grande.", hint: "Ve por M5.", m2: 0, m5: 6 },
+          { text: "Todavía estoy comparando precios.", hint: "Decidir por uso.", m2: 2, m5: 2 }
+        ]
+      },
+      {
+        q: "14. ¿Te importa tener lo último en cámara, conectividad y soporte?",
+        options: [
+          { text: "No, con que funcione bien basta.", hint: "M2.", m2: 5, m5: 0 },
+          { text: "Sí, pero no es lo más importante.", hint: "Ligera ventaja M5.", m2: 2, m5: 3 },
+          { text: "Sí, quiero modelo actual y más preparado a futuro.", hint: "M5.", m2: 0, m5: 6 }
+        ]
+      },
+      {
+        q: "15. ¿Cuál frase se parece más a ti?",
+        options: [
+          { text: "Quiero gastar poco y tener una Mac buena para lo básico.", hint: "M2.", m2: 6, m5: 0 },
+          { text: "Quiero una Mac para trabajar/programar tranquilo varios años.", hint: "M5.", m2: 0, m5: 6 },
+          { text: "Quiero que el precio mande, pero sin sacrificar demasiado.", hint: "M2 solo si está realmente barata.", m2: 3, m5: 3 }
+        ]
+      }
+    ];
+
+    let index = 0;
+    let answers = [];
+
+    const qText = document.getElementById("questionText");
+    const optionsEl = document.getElementById("options");
+    const progress = document.getElementById("progress");
+    const stepLabel = document.getElementById("stepLabel");
+    const percentLabel = document.getElementById("percentLabel");
+    const backBtn = document.getElementById("backBtn");
+    const restartBtn = document.getElementById("restartBtn");
+    const quiz = document.getElementById("quiz");
+    const result = document.getElementById("result");
+    const winnerBadge = document.getElementById("winnerBadge");
+    const resultTitle = document.getElementById("resultTitle");
+    const resultText = document.getElementById("resultText");
+    const recommendations = document.getElementById("recommendations");
+    const history = document.getElementById("history");
+    const restartFromResult = document.getElementById("restartFromResult");
+    const m2ScoreEl = document.getElementById("m2Score");
+    const m5ScoreEl = document.getElementById("m5Score");
+    const m2Bar = document.getElementById("m2Bar");
+    const m5Bar = document.getElementById("m5Bar");
+
+    function totals() {
+      return answers.reduce((acc, a) => {
+        acc.m2 += a.m2;
+        acc.m5 += a.m5;
+        return acc;
+      }, { m2: 0, m5: 0 });
+    }
+
+    function updateScoreUI() {
+      const t = totals();
+      const max = Math.max(t.m2, t.m5, 1);
+
+      m2ScoreEl.textContent = t.m2;
+      m5ScoreEl.textContent = t.m5;
+
+      m2Bar.style.width = `${Math.round((t.m2 / max) * 100)}%`;
+      m5Bar.style.width = `${Math.round((t.m5 / max) * 100)}%`;
+    }
+
+    function vibrate() {
+      if ("vibrate" in navigator) {
+        navigator.vibrate(12);
+      }
+    }
+
+    function renderQuestion() {
+      const q = questions[index];
+
+      qText.textContent = q.q;
+      optionsEl.innerHTML = "";
+
+      q.options.forEach((opt) => {
+        const btn = document.createElement("button");
+        btn.className = "option";
+        btn.innerHTML = `${opt.text}<small>${opt.hint}</small>`;
+        btn.onclick = () => {
+          vibrate();
+          answers[index] = opt;
+          index++;
+
+          if (index >= questions.length) {
+            showResult();
+          } else {
+            renderQuestion();
+          }
+
+          updateScoreUI();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+
+        optionsEl.appendChild(btn);
+      });
+
+      const percent = Math.round((index / questions.length) * 100);
+
+      progress.style.width = `${percent}%`;
+      stepLabel.textContent = `Pregunta ${index + 1} de ${questions.length}`;
+      percentLabel.textContent = `${percent}%`;
+      backBtn.disabled = index === 0;
+
+      updateScoreUI();
+    }
+
+    function showResult() {
+      const t = totals();
+      const diff = Math.abs(t.m5 - t.m2);
+      const total = Math.max(t.m2 + t.m5, 1);
+      const m5Pct = Math.round((t.m5 / total) * 100);
+      const m2Pct = Math.round((t.m2 / total) * 100);
+
+      quiz.style.display = "none";
+      result.style.display = "block";
+      progress.style.width = "100%";
+
+      if (t.m5 > t.m2 && diff >= 8) {
+        winnerBadge.textContent = "Recomendación: MacBook Air M5";
+        resultTitle.textContent = "Te conviene más la MacBook Air M5.";
+        resultText.textContent = `Tu perfil apunta a rendimiento, vida útil y margen para trabajo más pesado. Resultado: M5 ${m5Pct}% vs M2 ${m2Pct}%. La M5 es mejor si vas a programar en serio, usar multitarea fuerte, IA, edición o quedarte varios años con el equipo.`;
+      } else if (t.m2 > t.m5 && diff >= 8) {
+        winnerBadge.textContent = "Recomendación: MacBook Air M2";
+        resultTitle.textContent = "Te conviene más la MacBook Air M2.";
+        resultText.textContent = `Tu perfil prioriza ahorro y uso liviano/medio. Resultado: M2 ${m2Pct}% vs M5 ${m5Pct}%. La M2 tiene sentido si la consigues bastante más barata, en buen estado y no necesitas lo último.`;
+      } else {
+        winnerBadge.textContent = "Resultado cerrado";
+        resultTitle.textContent = "Decide por la diferencia real de precio.";
+        resultText.textContent = `Tu resultado quedó muy equilibrado: M2 ${m2Pct}% vs M5 ${m5Pct}%. Si la M2 está muy barata, puede ser buena compra. Si la diferencia con la M5 no es grande, compra la M5.`;
+      }
+
+      recommendations.innerHTML = `
+        <div class="rec-card">
+          <h3>Compra M2 si...</h3>
+          <ul>
+            <li>La diferencia de precio es grande.</li>
+            <li>Tu uso es navegación, estudio, Office y programación ligera.</li>
+            <li>Está en buen estado y con buena batería.</li>
+            <li>Idealmente tiene 16 GB de RAM y 512 GB SSD.</li>
+          </ul>
+        </div>
+
+        <div class="rec-card">
+          <h3>Compra M5 si...</h3>
+          <ul>
+            <li>Quieres quedarte con ella 4 o 5 años.</li>
+            <li>Programas con Docker, emuladores, bases locales o muchas apps.</li>
+            <li>Te interesa IA, edición o mejor reventa.</li>
+            <li>La diferencia de precio con la M2 no es demasiado alta.</li>
+          </ul>
+        </div>
+      `;
+
+      history.innerHTML = answers
+        .map((a, i) => `<p><strong>${i + 1}.</strong> ${a.text}</p>`)
+        .join("");
+
+      updateScoreUI();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function restart() {
+      vibrate();
+      index = 0;
+      answers = [];
+      result.style.display = "none";
+      quiz.style.display = "block";
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    backBtn.onclick = () => {
+      vibrate();
+
+      if (index > 0) {
+        index--;
+        answers.splice(index, 1);
+        renderQuestion();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    };
+
+    restartBtn.onclick = restart;
+    restartFromResult.onclick = restart;
+
+    renderQuestion();
+  </script>
+</body>
+</html>
