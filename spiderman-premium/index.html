@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Landing fan informativa de Spider-Man: Brand New Day. Diseño premium, minimalista, con tráiler en español y cursor de telaraña." />
+  <meta name="theme-color" content="#06070b" />
+  <title>Spider-Man: Brand New Day | Landing Premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#06070b;--panel:#0d1018;--panel2:#111622;--text:#f6f7fb;--muted:#a5adbb;--thin:rgba(255,255,255,.12);
+      --red:#d91f32;--red2:#ff4056;--blue:#2b6dff;--blue2:#7ab0ff;--max:1180px;--r:28px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden;cursor:none}
+    body:before{content:"";position:fixed;inset:0;z-index:-4;background:radial-gradient(circle at 18% 10%,rgba(217,31,50,.22),transparent 30%),radial-gradient(circle at 88% 8%,rgba(43,109,255,.18),transparent 32%),linear-gradient(180deg,#05060a 0,#080b12 48%,#05060a 100%)}
+    body:after{content:"";position:fixed;inset:0;z-index:-3;opacity:.28;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,#000,transparent 82%)}
+    a{color:inherit;text-decoration:none} .wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+    #webCanvas{position:fixed;inset:0;z-index:80;pointer-events:none}.cursor{position:fixed;left:0;top:0;z-index:81;width:34px;height:34px;pointer-events:none;transform:translate(-50%,-50%);mix-blend-mode:screen}.cursor svg{width:100%;height:100%;filter:drop-shadow(0 0 10px rgba(122,176,255,.55))}
+    .nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:60;width:min(var(--max),calc(100% - 28px));height:64px;border:1px solid var(--thin);border-radius:999px;background:rgba(6,7,11,.62);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;padding:0 10px 0 18px;box-shadow:0 16px 55px rgba(0,0,0,.24)}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.03em}.logo-mark{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle,#fff 0 7%,transparent 8%),conic-gradient(var(--red),#52060e,var(--blue),#07143f,var(--red));position:relative;box-shadow:0 0 26px rgba(217,31,50,.28)}.logo-mark:before,.logo-mark:after{content:"";position:absolute;inset:50% auto auto 0;width:100%;height:1px;background:rgba(255,255,255,.65)}.logo-mark:after{transform:rotate(90deg)}
+    .links{display:flex;gap:6px;color:rgba(246,247,251,.72);font-size:.92rem}.links a{padding:10px 13px;border-radius:999px}.links a:hover{background:rgba(255,255,255,.08);color:#fff}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 18px;border-radius:999px;background:#fff;color:#080b12;font-weight:800;border:1px solid rgba(255,255,255,.1);box-shadow:0 16px 45px rgba(255,255,255,.08);transition:.25s}.btn:hover{transform:translateY(-2px)}.btn.dark{background:rgba(255,255,255,.06);color:#fff;border-color:var(--thin);box-shadow:none}.btn.red{background:linear-gradient(135deg,var(--red),#8f0715);color:#fff}
+    .hero{min-height:100svh;display:grid;align-items:center;padding:130px 0 70px;position:relative}.hero:before{content:"";position:absolute;right:-220px;top:-120px;width:620px;height:620px;border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 54px,rgba(255,255,255,.12) 55px 56px,transparent 57px 92px),repeating-conic-gradient(from 8deg,rgba(255,255,255,.14) 0 1deg,transparent 1deg 17deg);opacity:.28;filter:blur(.1px)}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:60px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:10px;color:#dce4f5;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800}.eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red2);box-shadow:0 0 0 8px rgba(255,64,86,.12)}
+    h1{margin:22px 0 20px;font-family:Oswald,Impact,sans-serif;font-size:clamp(4.6rem,10vw,9.6rem);line-height:.9;letter-spacing:-.055em;text-transform:uppercase}.outline{color:transparent;-webkit-text-stroke:1.2px rgba(246,247,251,.72)}.hero-copy p{max-width:650px;margin:0 0 34px;color:var(--muted);font-size:1.08rem;line-height:1.8}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:36px}
+    .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.fact{border-top:1px solid var(--thin);padding-top:14px}.fact b{display:block;font-size:1rem}.fact span{display:block;margin-top:4px;color:var(--muted);font-size:.86rem}
+    .visual{position:relative;min-height:620px;border:1px solid var(--thin);border-radius:36px;background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025)),radial-gradient(circle at 25% 22%,rgba(217,31,50,.55),transparent 24%),radial-gradient(circle at 78% 40%,rgba(43,109,255,.45),transparent 26%);overflow:hidden;box-shadow:0 32px 120px rgba(0,0,0,.4)}
+    .visual:before{content:"";position:absolute;inset:0;background:repeating-conic-gradient(from 0deg at 52% 34%,rgba(255,255,255,.16) 0 1deg,transparent 1deg 20deg),repeating-radial-gradient(circle at 52% 34%,transparent 0 44px,rgba(255,255,255,.13) 45px 46px,transparent 47px 78px);opacity:.38;mask-image:radial-gradient(circle at 52% 34%,#000 0 48%,transparent 78%)}
+    .spider-mask{position:absolute;left:50%;top:92px;transform:translateX(-50%);width:min(310px,72%);aspect-ratio:.9/1;background:radial-gradient(ellipse at 34% 39%,#fff 0 9%,#dceeff 10% 18%,transparent 19%),radial-gradient(ellipse at 66% 39%,#fff 0 9%,#dceeff 10% 18%,transparent 19%),linear-gradient(135deg,#d91f32 0 50%,#194dcd 50%);clip-path:polygon(50% 0,87% 11%,100% 48%,82% 87%,50% 100%,18% 87%,0 48%,13% 11%);box-shadow:0 0 100px rgba(217,31,50,.36)}.spider-mask:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 49%,rgba(0,0,0,.55) 50%,transparent 51%),repeating-conic-gradient(from 0deg at 50% 48%,rgba(0,0,0,.5) 0 1deg,transparent 1deg 25deg);mix-blend-mode:multiply;opacity:.8}
+    .visual-card{position:absolute;left:26px;right:26px;bottom:26px;padding:24px;border:1px solid var(--thin);border-radius:24px;background:rgba(5,7,12,.64);backdrop-filter:blur(20px)}.visual-card h2{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:clamp(2.1rem,4vw,3.7rem);line-height:.94;margin:0 0 10px}.visual-card p{color:var(--muted);line-height:1.7;margin:0}
+    section{padding:92px 0}.section-head{display:grid;grid-template-columns:.9fr 1.1fr;gap:42px;align-items:end;margin-bottom:34px}.kicker{color:var(--red2);font-size:.78rem;text-transform:uppercase;letter-spacing:.18em;font-weight:900}.title{font-family:Oswald,sans-serif;font-size:clamp(3rem,7vw,6rem);line-height:.92;margin:8px 0 0;text-transform:uppercase;letter-spacing:-.04em}.section-head p{color:var(--muted);line-height:1.8;margin:0}
+    .editorial{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}.panel{border:1px solid var(--thin);border-radius:var(--r);background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025));padding:28px;position:relative;overflow:hidden}.panel:before{content:"";position:absolute;right:-80px;top:-80px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(43,109,255,.22),transparent 65%)}.panel h3{position:relative;margin:0 0 12px;font-size:1.4rem;letter-spacing:-.035em}.panel p{position:relative;margin:0;color:var(--muted);line-height:1.75}.panel strong{color:#fff}.stack{display:grid;gap:16px}.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}.time{text-align:center;padding:16px 8px;border:1px solid var(--thin);border-radius:18px;background:rgba(255,255,255,.04)}.time b{font-family:Oswald,sans-serif;font-size:2.6rem;line-height:1}.time span{display:block;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.13em}
+    .video-shell{border:1px solid var(--thin);border-radius:32px;background:linear-gradient(135deg,rgba(217,31,50,.12),rgba(43,109,255,.12));padding:12px;box-shadow:0 28px 100px rgba(0,0,0,.36)}.video{aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:#000}.video iframe{width:100%;height:100%;border:0;display:block}.note{margin-top:14px;color:var(--muted);font-size:.9rem;text-align:center}
+    .cast{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.person{min-height:130px;border:1px solid var(--thin);border-radius:22px;background:rgba(255,255,255,.045);padding:18px;display:flex;flex-direction:column;justify-content:space-between}.person b{font-size:1.02rem}.person span{color:var(--muted);font-size:.86rem}
+    .sources{display:flex;flex-wrap:wrap;gap:10px}.sources a{border:1px solid var(--thin);border-radius:999px;padding:11px 13px;background:rgba(255,255,255,.045);color:#d7deec;font-size:.9rem}.disclaimer{margin-top:22px;color:var(--muted);line-height:1.75;font-size:.95rem}footer{padding:40px 0 56px;color:rgba(246,247,251,.52);font-size:.86rem;text-align:center}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}.reveal.in{opacity:1;transform:translateY(0)}
+    @media(max-width:900px){body{cursor:auto}.cursor,#webCanvas{display:none}.links{display:none}.hero-grid,.section-head,.editorial{grid-template-columns:1fr}.visual{min-height:500px;order:-1}.facts,.cast{grid-template-columns:repeat(2,1fr)}.countdown{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.wrap{width:min(100% - 28px,var(--max))}.nav{top:10px;height:58px}.nav .btn{display:none}.hero{padding-top:104px}.facts,.cast{grid-template-columns:1fr}.visual{min-height:430px;border-radius:28px}.spider-mask{top:58px}.visual-card{left:16px;right:16px;bottom:16px;padding:18px}section{padding:70px 0}}
+  </style>
+</head>
+<body>
+  <canvas id="webCanvas"></canvas>
+  <div class="cursor" aria-hidden="true"><svg viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="5" fill="white"/><circle cx="21" cy="21" r="16" stroke="white" stroke-opacity=".45"/><path d="M21 1v40M1 21h40M7 7l28 28M35 7 7 35" stroke="white" stroke-opacity=".55"/></svg></div>
+
+  <header class="nav">
+    <a href="#inicio" class="logo"><span class="logo-mark"></span><span>Brand New Day</span></a>
+    <nav class="links"><a href="#info">Historia</a><a href="#trailer">Tráiler</a><a href="#reparto">Reparto</a><a href="#fuentes">Fuentes</a></nav>
+    <a class="btn red" href="#trailer">Ver tráiler</a>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Fan page informativa · 2026</span>
+          <h1><span>Spider-Man</span><br><span class="outline">Brand New Day</span></h1>
+          <p>Una landing minimalista y cinematográfica sobre la próxima película de Spider-Man. Construida sin pósters oficiales ni logos propietarios: solo composición, tipografía, color, telarañas CSS/SVG y datos informativos.</p>
+          <div class="actions"><a href="#trailer" class="btn">Tráiler en español</a><a href="#info" class="btn dark">Explorar detalles</a></div>
+          <div class="facts"><div class="fact"><b>31 julio 2026</b><span>Estreno anunciado</span></div><div class="fact"><b>Destin D. Cretton</b><span>Dirección</span></div><div class="fact"><b>Tom Holland</b><span>Peter Parker</span></div></div>
+        </div>
+        <aside class="visual reveal"><div class="spider-mask"></div><div class="visual-card"><h2>Un nuevo día empieza solo</h2><p>Peter Parker protege una Nueva York que ya no recuerda su nombre. La presión crece, y con ella una transformación inesperada.</p></div></aside>
+      </div>
+    </section>
+
+    <section id="info">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="kicker">Información oficial</div><h2 class="title">Menos ruido. Más atmósfera.</h2></div><p>El diseño prioriza lectura, aire visual y una estética sobria: detalles arácnidos sutiles, paneles limpios, animaciones suaves y una estructura tipo landing editorial.</p></div>
+        <div class="editorial">
+          <article class="panel reveal"><h3>Sinopsis</h3><p>Después de <strong>No Way Home</strong>, Peter vive solo y se dedica por completo a proteger la ciudad. Mientras la presión aumenta, una evolución física inesperada amenaza su existencia.</p></article>
+          <div class="stack">
+            <article class="panel reveal"><h3>Fecha</h3><p><strong>31 de julio de 2026</strong>. Las fechas locales pueden variar según país y cartelera.</p><div class="countdown"><div class="time"><b id="d">--</b><span>días</span></div><div class="time"><b id="h">--</b><span>horas</span></div><div class="time"><b id="m">--</b><span>min</span></div><div class="time"><b id="s">--</b><span>seg</span></div></div></article>
+            <article class="panel reveal"><h3>Experiencia</h3><p>Cursor de telaraña en escritorio, líneas conectadas al mouse, máscara creada en CSS y telarañas de fondo generadas sin imágenes externas.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trailer">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="kicker">Tráiler</div><h2 class="title">Versión en español</h2></div><p>Embebido desde YouTube para mantener la página ligera en GitHub Pages. Si el video no carga, se puede abrir directamente en YouTube desde el reproductor.</p></div>
+        <div class="video-shell reveal"><div class="video"><iframe src="https://www.youtube.com/embed/owfWVJoxXR4" title="Spider-Man: Brand New Day - Tráiler oficial en español" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
+        <p class="note">Tráiler en español HD · 31 de julio en cines.</p>
+      </div>
+    </section>
+
+    <section id="reparto">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="kicker">Reparto anunciado</div><h2 class="title">Nombres principales</h2></div><p>Créditos informativos sujetos a cambios antes del estreno.</p></div>
+        <div class="cast"><div class="person reveal"><b>Tom Holland</b><span>Peter Parker / Spider-Man</span></div><div class="person reveal"><b>Zendaya</b><span>Reparto anunciado</span></div><div class="person reveal"><b>Jacob Batalon</b><span>Reparto anunciado</span></div><div class="person reveal"><b>Sadie Sink</b><span>Reparto anunciado</span></div><div class="person reveal"><b>Jon Bernthal</b><span>Reparto anunciado</span></div><div class="person reveal"><b>Mark Ruffalo</b><span>Reparto anunciado</span></div><div class="person reveal"><b>Michael Mando</b><span>Reparto anunciado</span></div><div class="person reveal"><b>Tramell Tillman</b><span>Reparto anunciado</span></div></div>
+      </div>
+    </section>
+
+    <section id="fuentes">
+      <div class="wrap">
+        <div class="panel reveal">
+          <div class="kicker">Fuentes y aviso</div><h2 class="title">Página fan no oficial</h2>
+          <p class="disclaimer">Spider-Man, Marvel y Sony Pictures son marcas de sus respectivos titulares. Esta página es informativa, de práctica web y no tiene afiliación oficial.</p>
+          <div class="sources"><a href="https://www.marvel.com/movies/spider-man-brand-new-day" target="_blank" rel="noopener noreferrer">Marvel · ficha oficial</a><a href="https://www.marvel.com/articles/movies/spider-man-brand-new-day-full-official-trailer-july-2026" target="_blank" rel="noopener noreferrer">Marvel · tráiler oficial</a><a href="https://www.sonypictures.com/movies/spidermanbrandnewday" target="_blank" rel="noopener noreferrer">Sony Pictures</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>Landing fan informativa creada en HTML, CSS y JavaScript.</footer>
+  <script>
+    const release=new Date('2026-07-31T00:00:00-05:00');
+    function tick(){const diff=Math.max(release-new Date(),0);const d=Math.floor(diff/864e5),h=Math.floor(diff/36e5%24),m=Math.floor(diff/6e4%60),s=Math.floor(diff/1e3%60);['d','h','m','s'].forEach((id,i)=>document.getElementById(id).textContent=String([d,h,m,s][i]).padStart(2,'0'))}tick();setInterval(tick,1000);
+    const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}}),{threshold:.16});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    const cursor=document.querySelector('.cursor'),canvas=document.getElementById('webCanvas'),ctx=canvas.getContext('2d');let mouse={x:innerWidth/2,y:innerHeight/2},points=[];function size(){canvas.width=innerWidth;canvas.height=innerHeight}size();addEventListener('resize',size);addEventListener('mousemove',e=>{mouse={x:e.clientX,y:e.clientY};cursor.style.transform=`translate(${mouse.x-17}px,${mouse.y-17}px)`;points.push({x:mouse.x,y:mouse.y,a:1});if(points.length>18)points.shift()});function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.lineWidth=1;for(let i=1;i<points.length;i++){const p=points[i],q=points[i-1];p.a*=.93;ctx.strokeStyle=`rgba(255,255,255,${p.a*.34})`;ctx.beginPath();ctx.moveTo(q.x,q.y);ctx.lineTo(p.x,p.y);ctx.stroke();ctx.strokeStyle=`rgba(122,176,255,${p.a*.18})`;ctx.beginPath();ctx.arc(p.x,p.y,18+i*.7,0,Math.PI*2);ctx.stroke()}requestAnimationFrame(draw)}draw();
+  </script>
+</body>
+</html>
